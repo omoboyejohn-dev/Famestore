@@ -10,6 +10,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
@@ -20,7 +21,7 @@
 
     <div class="auth-container">
 
-        <!-- Logo -->
+        <!-- LOGO -->
 
         <a href="index.html" class="auth-logo">
 
@@ -34,7 +35,7 @@
         </a>
 
 
-        <!-- Login Card -->
+        <!-- LOGIN CARD -->
 
         <div class="auth-card">
 
@@ -51,7 +52,7 @@
 
             <form id="loginForm">
 
-                <!-- Gmail -->
+                <!-- GMAIL -->
 
                 <div class="form-group">
 
@@ -63,13 +64,14 @@
                         type="email"
                         id="email"
                         placeholder="Enter your Gmail address"
+                        autocomplete="email"
                         required
                     >
 
                 </div>
 
 
-                <!-- Password -->
+                <!-- PASSWORD -->
 
                 <div class="form-group">
 
@@ -81,20 +83,28 @@
                         type="password"
                         id="password"
                         placeholder="Enter your password"
+                        autocomplete="current-password"
                         required
                     >
 
                 </div>
 
 
-                <!-- Remember / Forgot -->
+                <!-- LOGIN OPTIONS -->
 
                 <div class="login-options">
 
                     <label>
-                        <input type="checkbox" id="rememberMe">
+
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                        >
+
                         Remember me
+
                     </label>
+
 
                     <a href="forgot-password.html">
                         Forgot Password?
@@ -103,16 +113,17 @@
                 </div>
 
 
-                <!-- Message -->
+                <!-- MESSAGE -->
 
                 <div id="loginMessage"></div>
 
 
-                <!-- Login Button -->
+                <!-- LOGIN -->
 
                 <button
                     type="submit"
                     class="btn btn-primary auth-button"
+                    id="loginButton"
                 >
                     Login Account
                 </button>
@@ -120,7 +131,7 @@
             </form>
 
 
-            <!-- Register -->
+            <!-- REGISTER -->
 
             <div class="auth-footer">
 
@@ -143,7 +154,47 @@
     </div>
 
 
-    <script>
+    <!-- FIREBASE -->
+
+    <script type="module">
+
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+        import {
+            getAuth,
+            signInWithEmailAndPassword,
+            setPersistence,
+            browserLocalPersistence,
+            browserSessionPersistence
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+        const firebaseConfig = {
+
+            apiKey: "AIzaSyCnANua92lDErdMwoKQG3xN4NtILIcyrsk",
+
+            authDomain: "famestore-aaa70.firebaseapp.com",
+
+            projectId: "famestore-aaa70",
+
+            storageBucket: "famestore-aaa70.firebasestorage.app",
+
+            messagingSenderId: "906739139078",
+
+            appId: "1:906739139078:web:435561274e65d47eb33987",
+
+            measurementId: "G-H2429058CT"
+
+        };
+
+
+        const app = initializeApp(firebaseConfig);
+
+        const auth = getAuth(app);
+
 
         const loginForm =
             document.getElementById("loginForm");
@@ -151,35 +202,174 @@
         const loginMessage =
             document.getElementById("loginMessage");
 
+        const loginButton =
+            document.getElementById("loginButton");
 
-        loginForm.addEventListener("submit", function(event) {
-
-            event.preventDefault();
-
-            const email =
-                document.getElementById("email").value.trim();
-
-            const password =
-                document.getElementById("password").value;
+        const rememberMe =
+            document.getElementById("rememberMe");
 
 
-            if (!email || !password) {
+        function showMessage(message, type) {
 
-                loginMessage.textContent =
-                    "Please enter your Gmail and password.";
+            loginMessage.textContent = message;
 
-                loginMessage.className = "form-error";
+            loginMessage.className = type;
 
-                return;
+        }
+
+
+        loginForm.addEventListener(
+            "submit",
+            async (event) => {
+
+                event.preventDefault();
+
+
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim();
+
+
+                const password =
+                    document
+                        .getElementById("password")
+                        .value;
+
+
+                if (!email || !password) {
+
+                    showMessage(
+                        "Please enter your Gmail and password.",
+                        "form-error"
+                    );
+
+                    return;
+                }
+
+
+                loginButton.disabled = true;
+
+                loginButton.textContent =
+                    "Logging In...";
+
+
+                try {
+
+                    const persistence =
+                        rememberMe.checked
+                            ? browserLocalPersistence
+                            : browserSessionPersistence;
+
+
+                    await setPersistence(
+                        auth,
+                        persistence
+                    );
+
+
+                    await signInWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+
+                    showMessage(
+                        "Login successful!",
+                        "form-success"
+                    );
+
+
+                    loginButton.textContent =
+                        "Login Successful";
+
+
+                    setTimeout(() => {
+
+                        window.location.href =
+                            "dashboard.html";
+
+                    }, 800);
+
+
+                } catch (error) {
+
+                    console.error(error);
+
+
+                    let message =
+                        "Unable to login. Please try again.";
+
+
+                    switch (error.code) {
+
+                        case "auth/invalid-credential":
+
+                            message =
+                                "Incorrect Gmail or password.";
+
+                            break;
+
+
+                        case "auth/user-not-found":
+
+                            message =
+                                "No account was found with this Gmail.";
+
+                            break;
+
+
+                        case "auth/wrong-password":
+
+                            message =
+                                "Incorrect Gmail or password.";
+
+                            break;
+
+
+                        case "auth/invalid-email":
+
+                            message =
+                                "Please enter a valid Gmail address.";
+
+                            break;
+
+
+                        case "auth/too-many-requests":
+
+                            message =
+                                "Too many attempts. Please try again later.";
+
+                            break;
+
+
+                        case "auth/network-request-failed":
+
+                            message =
+                                "Network error. Please check your internet connection.";
+
+                            break;
+
+                    }
+
+
+                    showMessage(
+                        message,
+                        "form-error"
+                    );
+
+
+                    loginButton.disabled = false;
+
+                    loginButton.textContent =
+                        "Login Account";
+
+                }
+
             }
-
-
-            loginMessage.textContent =
-                "Login form is ready.";
-
-            loginMessage.className = "form-success";
-
-        });
+        );
 
     </script>
 
