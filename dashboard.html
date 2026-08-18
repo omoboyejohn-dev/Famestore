@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Fame Store</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body class="dashboard-page">
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="dashboard-header">
+
+        <div class="dashboard-container dashboard-nav">
+
+            <a href="dashboard.html" class="dashboard-logo">
+
+                <span class="logo-icon">🛍️</span>
+
+                <div>
+                    <strong>Fame <span>Store</span></strong>
+                    <small>Send gifts 🎁, share love</small>
+                </div>
+
+            </a>
+
+
+            <div class="dashboard-user">
+
+                <div class="user-avatar" id="userAvatar">
+                    F
+                </div>
+
+                <div class="user-name-area">
+
+                    <strong id="headerUserName">
+                        Customer
+                    </strong>
+
+                    <small>
+                        My Account
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="dashboard-main">
+
+        <div class="dashboard-container">
+
+
+            <!-- ================= WELCOME ================= -->
+
+            <section class="dashboard-welcome">
+
+                <div>
+
+                    <p class="welcome-label">
+                        GOOD TO SEE YOU
+                    </p>
+
+                    <h1>
+                        Good morning,
+                        <span id="welcomeUserName">
+                            Customer
+                        </span>
+                    </h1>
+
+                    <p>
+                        Welcome back! Let's make someone smile today ❤️
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= BALANCE ================= -->
+
+            <section class="balance-card">
+
+                <div class="balance-info">
+
+                    <span>
+                        Total Balance
+                    </span>
+
+                    <h2 id="balanceAmount">
+                        ₦0.00
+                    </h2>
+
+                    <small>
+                        Available for your gift orders
+                    </small>
+
+                </div>
+
+
+                <a href="deposit.html" class="dashboard-deposit-btn">
+                    + Deposit
+                </a>
+
+            </section>
+
+
+            <!-- ================= QUICK ACTIONS ================= -->
+
+            <section class="quick-section">
+
+                <div class="dashboard-section-title">
+
+                    <div>
+                        <h2>Quick Actions</h2>
+
+                        <p>
+                            Manage your Fame Store account
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="quick-grid">
+
+
+                    <a href="profile.html" class="quick-card">
+
+                        <div class="quick-icon">
+                            👤
+                        </div>
+
+                        <strong>Profile</strong>
+
+                        <span>
+                            Manage your account
+                        </span>
+
+                    </a>
+
+
+                    <a href="deposit.html" class="quick-card">
+
+                        <div class="quick-icon">
+                            💳
+                        </div>
+
+                        <strong>Deposit</strong>
+
+                        <span>
+                            Add money to balance
+                        </span>
+
+                    </a>
+
+
+                    <a href="settings.html" class="quick-card">
+
+                        <div class="quick-icon">
+                            ⚙️
+                        </div>
+
+                        <strong>Settings</strong>
+
+                        <span>
+                            Account settings
+                        </span>
+
+                    </a>
+
+
+                    <a href="notifications.html" class="quick-card">
+
+                        <div class="quick-icon">
+                            🔔
+                        </div>
+
+                        <strong>Notifications</strong>
+
+                        <span>
+                            View notifications
+                        </span>
+
+                    </a>
+
+
+                    <a href="support.html" class="quick-card">
+
+                        <div class="quick-icon">
+                            🎧
+                        </div>
+
+                        <strong>Support</strong>
+
+                        <span>
+                            Get help from us
+                        </span>
+
+                    </a>
+
+
+                    <a href="payment-history.html" class="quick-card">
+
+                        <div class="quick-icon">
+                            💰
+                        </div>
+
+                        <strong>Payment History</strong>
+
+                        <span>
+                            View your payments
+                        </span>
+
+                    </a>
+
+
+                    <a href="order-history.html" class="quick-card">
+
+                        <div class="quick-icon">
+                            📦
+                        </div>
+
+                        <strong>Order History</strong>
+
+                        <span>
+                            View your gift orders
+                        </span>
+
+                    </a>
+
+
+                    <button
+                        type="button"
+                        class="quick-card logout-card"
+                        id="logoutButton"
+                    >
+
+                        <div class="quick-icon">
+                            🚪
+                        </div>
+
+                        <strong>Logout</strong>
+
+                        <span>
+                            Sign out of account
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= COUNTRY SELECTION ================= -->
+
+            <section class="country-section">
+
+                <div class="country-heading">
+
+                    <div>
+
+                        <p class="welcome-label">
+                            GLOBAL DELIVERY
+                        </p>
+
+                        <h2>
+                            Which country do you want to send to?
+                        </h2>
+
+                        <p>
+                            Select a destination to explore gifts available
+                            for delivery.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="country-grid" id="countryGrid">
+
+
+                    <button
+                        type="button"
+                        class="country-card"
+                        data-country="USA"
+                    >
+                        <span>🇺🇸</span>
+                        <strong>USA</strong>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="country-card"
+                        data-country="Canada"
+                    >
+                        <span>🇨🇦</span>
+                        <strong>Canada</strong>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="country-card"
+                        data-country="United Kingdom"
+                    >
+                        <span>🇬🇧</span>
+                        <strong>UK</strong>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="country-card"
+                        data-country="Germany"
+                    >
+                        <span>🇩🇪</span>
+                        <strong>Germany</strong>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="country-card"
+                        data-country="South Africa"
+                    >
+                        <span>🇿🇦</span>
+                        <strong>South Africa</strong>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="country-card"
+                        data-country="Belgium"
+                    >
+                        <span>🇧🇪</span>
+                        <strong>Belgium</strong>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="country-card"
+                        data-country="Philippines"
+                    >
+                        <span>🇵🇭</span>
+                        <strong>Philippines</strong>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="country-card"
+                        data-country="Portugal"
+                    >
+                        <span>🇵🇹</span>
+                        <strong>Portugal</strong>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="country-card"
+                        data-country="Spain"
+                    >
+                        <span>🇪🇸</span>
+                        <strong>Spain</strong>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="country-card"
+                        data-country="France"
+                    >
+                        <span>🇫🇷</span>
+                        <strong>France</strong>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="country-card"
+                        data-country="Mexico"
+                    >
+                        <span>🇲🇽</span>
+                        <strong>Mexico</strong>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="country-card"
+                        data-country="Turkey"
+                    >
+                        <span>🇹🇷</span>
+                        <strong>Turkey</strong>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="country-card"
+                        data-country="China"
+                    >
+                        <span>🇨🇳</span>
+                        <strong>China</strong>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="country-card"
+                        data-country="Saudi Arabia"
+                    >
+                        <span>🇸🇦</span>
+                        <strong>Saudi Arabia</strong>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="country-card"
+                        data-country="Australia"
+                    >
+                        <span>🇦🇺</span>
+                        <strong>Australia</strong>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="country-card"
+                        data-country="Kuwait"
+                    >
+                        <span>🇰🇼</span>
+                        <strong>Kuwait</strong>
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="country-card other-country-card"
+                        id="otherCountryButton"
+                    >
+
+                        <span>•••</span>
+
+                        <strong>
+                            Other Countries
+                        </strong>
+
+                    </button>
+
+
+                </div>
+
+
+                <!-- SELECTED COUNTRY -->
+
+                <div
+                    class="selected-country"
+                    id="selectedCountry"
+                    hidden
+                >
+
+                    <span>
+                        Selected destination:
+                    </span>
+
+                    <strong id="selectedCountryName">
+                        —
+                    </strong>
+
+                    <button
+                        type="button"
+                        id="continueButton"
+                    >
+                        Continue →
+                    </button>
+
+                </div>
+
+
+                <!-- OTHER COUNTRY FORM -->
+
+                <div
+                    class="other-country-form"
+                    id="otherCountryForm"
+                    hidden
+                >
+
+                    <h3>
+                        Which other country do you plan to send to?
+                    </h3>
+
+                    <p>
+                        Tell us the country you'd like to send a gift to.
+                    </p>
+
+
+                    <form id="otherCountrySubmit">
+
+                        <div class="other-country-input">
+
+                            <input
+                                type="text"
+                                id="otherCountryName"
+                                placeholder="Name the country here"
+                                required
+                            >
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                            >
+                                Submit
+                            </button>
+
+                        </div>
+
+                    </form>
+
+
+                    <div id="countryMessage"></div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="dashboard-footer">
+
+        <div class="dashboard-container footer-dashboard-grid">
+
+
+            <!-- COMPANY -->
+
+            <div class="dashboard-footer-column">
+
+                <h3>Company</h3>
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+                <a href="contact.html">
+                    Contact Us
+                </a>
+
+                <a href="terms.html">
+                    Terms & Conditions
+                </a>
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+            </div>
+
+
+            <!-- SUPPORT -->
+
+            <div class="dashboard-footer-column">
+
+                <h3>Support</h3>
+
+                <a href="faq.html">
+                    FAQ
+                </a>
+
+                <a href="delivery.html">
+                    Delivery Information
+                </a>
+
+                <a href="support.html">
+                    Help Center
+                </a>
+
+                <a href="contact.html">
+                    Contact Support
+                </a>
+
+            </div>
+
+
+            <!-- FOLLOW US -->
+
+            <div class="dashboard-footer-column">
+
+                <h3>Follow Us</h3>
+
+                <a href="#" target="_blank">
+                    Facebook
+                </a>
+
+                <a href="#" target="_blank">
+                    Instagram
+                </a>
+
+                <a href="#" target="_blank">
+                    TikTok
+                </a>
+
+                <a href="#" target="_blank">
+                    X / Twitter
+                </a>
+
+            </div>
+
+
+            <!-- SECURE -->
+
+            <div class="dashboard-footer-column secure-column">
+
+                <h3>Secure & Trusted</h3>
+
+                <div class="secure-item">
+                    <span>🔒</span>
+                    <p>
+                        Secure Payments
+                    </p>
+                </div>
+
+                <div class="secure-item">
+                    <span>🌎</span>
+                    <p>
+                        Global Delivery
+                    </p>
+                </div>
+
+                <div class="secure-item">
+                    <span>❤️</span>
+                    <p>
+                        Trusted Gift Service
+                    </p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="dashboard-footer-bottom">
+
+            <div class="dashboard-container">
+
+                <p>
+                    © 2026 Fame Store. All rights reserved.
+                </p>
+
+                <p>
+                    Send gifts 🎁, share love ❤️
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= FIREBASE ================= -->
+
+    <script type="module">
+
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+        import {
+            getAuth,
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+        const firebaseConfig = {
+
+            apiKey: "AIzaSyCnANua92lDErdMwoKQG3xN4NtILIcyrsk",
+
+            authDomain: "famestore-aaa70.firebaseapp.com",
+
+            projectId: "famestore-aaa70",
+
+            storageBucket: "famestore-aaa70.firebasestorage.app",
+
+            messagingSenderId: "906739139078",
+
+            appId: "1:906739139078:web:435561274e65d47eb33987",
+
+            measurementId: "G-H2429058CT"
+
+        };
+
+
+        const app = initializeApp(firebaseConfig);
+
+        const auth = getAuth(app);
+
+
+        /*
+         * CHECK LOGIN
+         */
+
+        onAuthStateChanged(auth, (user) => {
+
+            if (!user) {
+
+                window.location.href =
+                    "login.html";
+
+                return;
+
+            }
+
+
+            const displayName =
+                user.displayName ||
+                user.email.split("@")[0];
+
+
+            document.getElementById(
+                "welcomeUserName"
+            ).textContent = displayName;
+
+
+            document.getElementById(
+                "headerUserName"
+            ).textContent = displayName;
+
+
+            const firstLetter =
+                displayName
+                    .charAt(0)
+                    .toUpperCase();
+
+
+            document.getElementById(
+                "userAvatar"
+            ).textContent = firstLetter;
+
+        });
+
+
+        /*
+         * LOGOUT
+         */
+
+        const logoutButton =
+            document.getElementById("logoutButton");
+
+
+        logoutButton.addEventListener(
+            "click",
+            async () => {
+
+                try {
+
+                    await signOut(auth);
+
+                    window.location.href =
+                        "login.html";
+
+                } catch (error) {
+
+                    console.error(
+                        "Logout error:",
+                        error
+                    );
+
+                }
+
+            }
+        );
+
+
+        /*
+         * COUNTRY SELECTION
+         */
+
+        const countryCards =
+            document.querySelectorAll(
+                ".country-card"
+            );
+
+
+        const selectedCountry =
+            document.getElementById(
+                "selectedCountry"
+            );
+
+
+        const selectedCountryName =
+            document.getElementById(
+                "selectedCountryName"
+            );
+
+
+        let chosenCountry = "";
+
+
+        countryCards.forEach((card) => {
+
+            card.addEventListener(
+                "click",
+                () => {
+
+                    countryCards.forEach(
+                        (item) => {
+                            item.classList.remove(
+                                "selected"
+                            );
+                        }
+                    );
+
+
+                    card.classList.add(
+                        "selected"
+                    );
+
+
+                    chosenCountry =
+                        card.dataset.country;
+
+
+                    selectedCountryName.textContent =
+                        chosenCountry;
+
+
+                    selectedCountry.hidden =
+                        false;
+
+
+                    document
+                        .getElementById(
+                            "otherCountryForm"
+                        )
+                        .hidden = true;
+
+                }
+            );
+
+        });
+
+
+        /*
+         * OTHER COUNTRIES
+         */
+
+        const otherCountryButton =
+            document.getElementById(
+                "otherCountryButton"
+            );
+
+
+        const otherCountryForm =
+            document.getElementById(
+                "otherCountryForm"
+            );
+
+
+        otherCountryButton.addEventListener(
+            "click",
+            () => {
+
+                countryCards.forEach(
+                    (item) => {
+                        item.classList.remove(
+                            "selected"
+                        );
+                    }
+                );
+
+
+                selectedCountry.hidden =
+                    true;
+
+
+                otherCountryForm.hidden =
+                    false;
+
+
+                document
+                    .getElementById(
+                        "otherCountryName"
+                    )
+                    .focus();
+
+            }
+        );
+
+
+        /*
+         * OTHER COUNTRY SUBMIT
+         */
+
+        const otherCountrySubmit =
+            document.getElementById(
+                "otherCountrySubmit"
+            );
+
+
+        const countryMessage =
+            document.getElementById(
+                "countryMessage"
+            );
+
+
+        otherCountrySubmit.addEventListener(
+            "submit",
+            (event) => {
+
+                event.preventDefault();
+
+
+                const country =
+                    document
+                        .getElementById(
+                            "otherCountryName"
+                        )
+                        .value
+                        .trim();
+
+
+                if (!country) {
+
+                    return;
+
+                }
+
+
+                chosenCountry =
+                    country;
+
+
+                selectedCountryName.textContent =
+                    country;
+
+
+                selectedCountry.hidden =
+                    false;
+
+
+                otherCountryForm.hidden =
+                    true;
+
+
+                countryMessage.textContent =
+                    "";
+
+            }
+        );
+
+
+        /*
+         * CONTINUE
+         */
+
+        document
+            .getElementById(
+                "continueButton"
+            )
+            .addEventListener(
+                "click",
+                () => {
+
+                    if (!chosenCountry) {
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * For now we send the selected
+                     * destination to the gifts page.
+                     * We will build that page next.
+                     */
+
+                    window.location.href =
+                        "gifts.html?country=" +
+                        encodeURIComponent(
+                            chosenCountry
+                        );
+
+                }
+            );
+
+    </script>
+
+</body>
+</html>
