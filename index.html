@@ -4,290 +4,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Fame Store | Send Gifts. Share Love.</title>
+    <title>Fame Store | Send Gifts, Share Love</title>
 
     <meta
         name="description"
-        content="Fame Store - Send flowers, cakes, teddy bears, chocolates, pizza, perfumes, watches and gifts to your loved ones."
+        content="Send gifts to your loved ones anywhere in the world with Fame Store."
     >
+
+    <link rel="stylesheet" href="style.css">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet"
     >
-
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
-
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <!-- =========================
-         TOP HEADER
-    ========================== -->
+    <!-- ================= HEADER ================= -->
 
-    <header class="main-header">
+    <header class="header">
 
-        <div class="header-container">
+        <div class="container nav">
 
-            <!-- Logo -->
             <a href="index.html" class="logo">
-                <div class="logo-icon">
-                    <i class="fa-solid fa-gift"></i>
-                </div>
+                <span class="logo-icon">🛍️</span>
 
-                <div class="logo-text">
-                    <h1>Fame Store</h1>
-                    <span>Sends Gifts. Share Love.</span>
+                <div>
+                    <strong>Fame <span>Store</span></strong>
+                    <small>Send gifts 🎁, share love</small>
                 </div>
             </a>
 
+            <nav class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="gifts.html">Gifts</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
 
-            <!-- Search -->
-            <div class="search-area">
+            <div class="nav-actions">
 
-                <select class="category-select">
-                    <option>All Categories</option>
-                    <option>Flowers</option>
-                    <option>Cakes</option>
-                    <option>Chocolates</option>
-                    <option>Teddy Bears</option>
-                    <option>Pizza & Drinks</option>
-                    <option>Perfumes</option>
-                    <option>Watches</option>
-                    <option>Gift Boxes</option>
-                </select>
-
-                <input
-                    type="text"
-                    placeholder="Search for gifts..."
-                    id="searchInput"
-                >
-
-                <button class="search-btn" type="button">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-
-            </div>
-
-
-            <!-- Header Actions -->
-            <div class="header-actions">
-
-                <button class="location-btn">
-                    <i class="fa-solid fa-location-dot"></i>
-
-                    <span>
-                        <small>Deliver to</small>
-                        Nigeria (NGN)
-                    </span>
-
-                    <i class="fa-solid fa-chevron-down"></i>
-                </button>
-
-
-                <a href="#" class="header-action">
-                    <i class="fa-regular fa-heart"></i>
-                    <span>Wishlist</span>
+                <a href="login.html" class="btn btn-outline">
+                    Login Account
                 </a>
 
-
-                <a href="cart.html" class="header-action cart-link">
-
-                    <div class="cart-icon">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="cart-count">0</span>
-                    </div>
-
-                    <span>Cart</span>
-
-                </a>
-
-
-                <a href="login.html" class="header-action">
-                    <i class="fa-regular fa-user"></i>
-                    <span>Login</span>
+                <a href="register.html" class="btn btn-primary">
+                    Register Account
                 </a>
 
             </div>
+
+            <button class="menu-btn" id="menuBtn">
+                ☰
+            </button>
 
         </div>
-
-
-        <!-- =========================
-             NAVIGATION
-        ========================== -->
-
-        <nav class="main-nav">
-
-            <div class="nav-container">
-
-                <a href="index.html" class="active">Home</a>
-
-                <a href="shop.html?category=flowers">Flowers</a>
-
-                <a href="shop.html?category=cakes">Cakes</a>
-
-                <a href="shop.html?category=chocolates">
-                    Chocolates
-                </a>
-
-                <a href="shop.html?category=teddy-bears">
-                    Teddy Bears
-                </a>
-
-                <a href="shop.html?category=pizza">
-                    Pizza & Drinks
-                </a>
-
-                <a href="shop.html?category=perfumes">
-                    Perfumes
-                </a>
-
-                <a href="shop.html?category=watches">
-                    Watches
-                </a>
-
-                <a href="shop.html?category=car-keys">
-                    Car Keys
-                </a>
-
-                <a href="shop.html?category=gift-boxes">
-                    Gift Boxes
-                </a>
-
-                <a href="shop.html">
-                    More
-                    <i class="fa-solid fa-chevron-down"></i>
-                </a>
-
-            </div>
-
-        </nav>
 
     </header>
 
 
+    <!-- ================= MOBILE MENU ================= -->
 
-    <!-- =========================
-         HERO SECTION
-    ========================== -->
+    <div class="mobile-menu" id="mobileMenu">
+
+        <a href="index.html">Home</a>
+        <a href="gifts.html">Gifts</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <div class="mobile-buttons">
+
+            <a href="login.html" class="btn btn-outline">
+                Login Account
+            </a>
+
+            <a href="register.html" class="btn btn-primary">
+                Register Account
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= HERO ================= -->
 
     <main>
 
-        <section class="hero-section">
+        <section class="hero">
 
-            <div class="hero-container">
+            <div class="container hero-content">
 
-                <!-- Hero Content -->
-                <div class="hero-content">
+                <div class="hero-text">
 
-                    <div class="hero-label">
-                        <i class="fa-solid fa-heart"></i>
-                        SEND LOVE, ANYWHERE
-                    </div>
+                    <span class="hero-label">
+                        GIFTS BRING US CLOSER
+                    </span>
 
-
-                    <h2>
+                    <h1>
                         Send Gifts to Your
                         <span>Loved Ones</span>
-                        Anywhere in the World
-                    </h2>
-
+                        Anywhere in the World 🌎
+                    </h1>
 
                     <p>
                         Make every moment special. Choose from our wide
                         collection of gifts and surprise your loved ones today.
                     </p>
 
-
                     <div class="hero-buttons">
 
-                        <a href="shop.html" class="btn-primary">
-                            <i class="fa-solid fa-gift"></i>
-                            Send a Gift Now
+                        <a href="gifts.html" class="btn btn-primary btn-large">
+                            Send a Gift Now →
                         </a>
 
-                        <a href="#how-it-works" class="btn-secondary">
-                            <i class="fa-regular fa-circle-play"></i>
-                            How It Works
+                        <a href="#how-it-works" class="btn btn-outline btn-large">
+                            ▶ How It Works
                         </a>
 
+                    </div>
+
+                    <div class="hero-note">
+                        More Gifts, Brighter Moments ❤️
                     </div>
 
                 </div>
 
 
-                <!-- Hero Image -->
                 <div class="hero-image">
 
-                    <div class="hero-circle"></div>
+                    <div class="gift-image-placeholder">
 
-                    <img
-                        src="images/banners/hero-gift.jpg"
-                        alt="Couple receiving a gift"
-                    >
-
-                    <div class="floating-heart heart-one">
-                        <i class="fa-solid fa-heart"></i>
-                    </div>
-
-                    <div class="floating-heart heart-two">
-                        <i class="fa-solid fa-heart"></i>
-                    </div>
-
-                </div>
-
-
-                <!-- Hero Benefits -->
-                <div class="hero-benefits">
-
-                    <div class="hero-benefit">
-
-                        <div class="benefit-icon">
-                            <i class="fa-solid fa-globe"></i>
+                        <div class="gift-emoji">
+                            🎁
                         </div>
 
-                        <div>
-                            <strong>Global Delivery</strong>
-                            <p>We deliver to 200+ countries worldwide</p>
+                        <div class="flower-emoji">
+                            🌹
                         </div>
 
-                    </div>
-
-
-                    <div class="hero-benefit">
-
-                        <div class="benefit-icon">
-                            <i class="fa-solid fa-shield-heart"></i>
-                        </div>
-
-                        <div>
-                            <strong>Secure Payment</strong>
-                            <p>Your payments are safe and protected</p>
-                        </div>
-
-                    </div>
-
-
-                    <div class="hero-benefit">
-
-                        <div class="benefit-icon">
-                            <i class="fa-regular fa-heart"></i>
-                        </div>
-
-                        <div>
-                            <strong>100% Happiness</strong>
-                            <p>We guarantee smiles with every gift</p>
+                        <div class="bear-emoji">
+                            🧸
                         </div>
 
                     </div>
@@ -299,66 +162,58 @@
         </section>
 
 
+        <!-- ================= TRUST FEATURES ================= -->
 
-        <!-- =========================
-             FEATURES
-        ========================== -->
+        <section class="trust-section">
 
-        <section class="features-section">
+            <div class="container trust-grid">
 
-            <div class="features-container">
+                <div class="trust-card">
 
-                <div class="feature-item">
-
-                    <div class="feature-icon pink">
-                        <i class="fa-solid fa-truck-fast"></i>
+                    <div class="trust-icon">
+                        🌐
                     </div>
 
                     <div>
-                        <h3>Fast Delivery</h3>
-                        <p>Gifts delivered on time, every time.</p>
+                        <h3>Global Delivery</h3>
+
+                        <p>
+                            We deliver to 200+ countries worldwide.
+                        </p>
                     </div>
 
                 </div>
 
 
-                <div class="feature-item">
+                <div class="trust-card">
 
-                    <div class="feature-icon green">
-                        <i class="fa-solid fa-shield-halved"></i>
+                    <div class="trust-icon">
+                        🔒
                     </div>
 
                     <div>
-                        <h3>Trusted & Secure</h3>
-                        <p>Your data and payments are 100% secure.</p>
+                        <h3>Secure Payment</h3>
+
+                        <p>
+                            Your payments are safe and protected.
+                        </p>
                     </div>
 
                 </div>
 
 
-                <div class="feature-item">
+                <div class="trust-card">
 
-                    <div class="feature-icon orange">
-                        <i class="fa-solid fa-headset"></i>
+                    <div class="trust-icon">
+                        😊
                     </div>
 
                     <div>
-                        <h3>24/7 Support</h3>
-                        <p>We are always here to help you.</p>
-                    </div>
+                        <h3>100% Happiness</h3>
 
-                </div>
-
-
-                <div class="feature-item">
-
-                    <div class="feature-icon purple">
-                        <i class="fa-solid fa-gift"></i>
-                    </div>
-
-                    <div>
-                        <h3>Wide Selection</h3>
-                        <p>Thousands of unique gifts for every occasion.</p>
+                        <p>
+                            We guarantee a smile with every gift.
+                        </p>
                     </div>
 
                 </div>
@@ -368,173 +223,59 @@
         </section>
 
 
+        <!-- ================= POPULAR GIFTS ================= -->
 
-        <!-- =========================
-             CATEGORIES
-        ========================== -->
+        <section class="gifts-section">
 
-        <section class="categories-section">
+            <div class="container">
 
-            <div class="section-container">
-
-                <div class="section-header">
+                <div class="section-heading">
 
                     <div>
-                        <h2>Shop by Category</h2>
+                        <h2>Popular Gifts</h2>
+
+                        <p>
+                            Thoughtful gifts for every occasion
+                        </p>
                     </div>
 
-                    <a href="shop.html">
-                        View All Categories
-                        <i class="fa-solid fa-arrow-right"></i>
+                    <a href="gifts.html">
+                        View All Gifts →
                     </a>
 
                 </div>
 
 
-                <div class="category-grid">
+                <div class="gift-grid">
 
-
-                    <!-- Flowers -->
-                    <a href="shop.html?category=flowers" class="category-card">
-
-                        <div class="category-image">
-                            <img
-                                src="images/categories/flowers.jpg"
-                                alt="Flowers"
-                            >
-                        </div>
-
-                        <div class="category-info">
-                            <h3>Flowers</h3>
-                            <p>Beautiful Bouquets</p>
-                        </div>
-
+                    <a href="gifts.html?category=flowers" class="gift-card">
+                        <div class="gift-card-image">💐</div>
+                        <h3>Flowers</h3>
                     </a>
 
-
-                    <!-- Cakes -->
-                    <a href="shop.html?category=cakes" class="category-card">
-
-                        <div class="category-image">
-                            <img
-                                src="images/categories/cakes.jpg"
-                                alt="Cakes"
-                            >
-                        </div>
-
-                        <div class="category-info">
-                            <h3>Cakes</h3>
-                            <p>Sweet & Delicious</p>
-                        </div>
-
+                    <a href="gifts.html?category=pizza" class="gift-card">
+                        <div class="gift-card-image">🍕🥤</div>
+                        <h3>Pizza & Coke</h3>
                     </a>
 
-
-                    <!-- Teddy Bears -->
-                    <a href="shop.html?category=teddy-bears" class="category-card">
-
-                        <div class="category-image">
-                            <img
-                                src="images/categories/teddy-bear.jpg"
-                                alt="Teddy Bears"
-                            >
-                        </div>
-
-                        <div class="category-info">
-                            <h3>Teddy Bears</h3>
-                            <p>Cute & Cuddly</p>
-                        </div>
-
+                    <a href="gifts.html?category=cakes" class="gift-card">
+                        <div class="gift-card-image">🎂</div>
+                        <h3>Cakes</h3>
                     </a>
 
-
-                    <!-- Pizza -->
-                    <a href="shop.html?category=pizza" class="category-card">
-
-                        <div class="category-image">
-                            <img
-                                src="images/categories/pizza.jpg"
-                                alt="Pizza and Drinks"
-                            >
-                        </div>
-
-                        <div class="category-info">
-                            <h3>Pizza & Drinks</h3>
-                            <p>Tasty & Yummy</p>
-                        </div>
-
+                    <a href="gifts.html?category=gift-boxes" class="gift-card">
+                        <div class="gift-card-image">🎁</div>
+                        <h3>Gift Boxes</h3>
                     </a>
 
-
-                    <!-- Perfumes -->
-                    <a href="shop.html?category=perfumes" class="category-card">
-
-                        <div class="category-image">
-                            <img
-                                src="images/categories/perfume.jpg"
-                                alt="Perfumes"
-                            >
-                        </div>
-
-                        <div class="category-info">
-                            <h3>Perfumes</h3>
-                            <p>Original & Long Lasting</p>
-                        </div>
-
+                    <a href="gifts.html?category=chocolates" class="gift-card">
+                        <div class="gift-card-image">🍫</div>
+                        <h3>Chocolates</h3>
                     </a>
 
-
-                    <!-- Watches -->
-                    <a href="shop.html?category=watches" class="category-card">
-
-                        <div class="category-image">
-                            <img
-                                src="images/categories/watch.jpg"
-                                alt="Watches"
-                            >
-                        </div>
-
-                        <div class="category-info">
-                            <h3>Watches</h3>
-                            <p>Stylish & Premium</p>
-                        </div>
-
-                    </a>
-
-
-                    <!-- Car Keys -->
-                    <a href="shop.html?category=car-keys" class="category-card">
-
-                        <div class="category-image">
-                            <img
-                                src="images/categories/car-key.jpg"
-                                alt="Car Keys"
-                            >
-                        </div>
-
-                        <div class="category-info">
-                            <h3>Car Keys</h3>
-                            <p>Luxury & Smart</p>
-                        </div>
-
-                    </a>
-
-
-                    <!-- Gift Boxes -->
-                    <a href="shop.html?category=gift-boxes" class="category-card">
-
-                        <div class="category-image">
-                            <img
-                                src="images/categories/gift-box.jpg"
-                                alt="Gift Boxes"
-                            >
-                        </div>
-
-                        <div class="category-info">
-                            <h3>Gift Boxes</h3>
-                            <p>Surprise Inside</p>
-                        </div>
-
+                    <a href="gifts.html?category=teddy-bears" class="gift-card">
+                        <div class="gift-card-image">🧸</div>
+                        <h3>Teddy Bears</h3>
                     </a>
 
                 </div>
@@ -544,392 +285,162 @@
         </section>
 
 
-
-        <!-- =========================
-             POPULAR GIFTS
-        ========================== -->
-
-        <section class="products-section">
-
-            <div class="section-container">
-
-                <div class="section-header">
-
-                    <h2>Popular Gifts</h2>
-
-                    <a href="shop.html">
-                        View All
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-
-                </div>
-
-
-                <div class="product-grid">
-
-
-                    <!-- Product 1 -->
-                    <article class="product-card">
-
-                        <div class="product-image">
-
-                            <span class="product-badge bestseller">
-                                Bestseller
-                            </span>
-
-                            <button class="wishlist-btn">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-
-                            <img
-                                src="images/products/pink-rose-bouquet.jpg"
-                                alt="Pink Rose Bouquet"
-                            >
-
-                        </div>
-
-                        <div class="product-info">
-
-                            <h3>Pink Rose Bouquet</h3>
-
-                            <div class="product-bottom">
-
-                                <strong>₦30,000</strong>
-
-                                <span class="rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    4.8 (120)
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <!-- Product 2 -->
-                    <article class="product-card">
-
-                        <div class="product-image">
-
-                            <span class="product-badge discount">
-                                -10%
-                            </span>
-
-                            <button class="wishlist-btn">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-
-                            <img
-                                src="images/products/teddy-bear.jpg"
-                                alt="Large Teddy Bear"
-                            >
-
-                        </div>
-
-                        <div class="product-info">
-
-                            <h3>Large Teddy Bear</h3>
-
-                            <div class="product-bottom">
-
-                                <div class="price">
-                                    <strong>₦25,000</strong>
-                                    <del>₦28,000</del>
-                                </div>
-
-                                <span class="rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    4.7 (98)
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <!-- Product 3 -->
-                    <article class="product-card">
-
-                        <div class="product-image">
-
-                            <span class="product-badge bestseller">
-                                Bestseller
-                            </span>
-
-                            <button class="wishlist-btn">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-
-                            <img
-                                src="images/products/chocolate-cake.jpg"
-                                alt="Chocolate Cake"
-                            >
-
-                        </div>
-
-                        <div class="product-info">
-
-                            <h3>Chocolate Cake</h3>
-
-                            <div class="product-bottom">
-
-                                <strong>₦20,000</strong>
-
-                                <span class="rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    4.9 (156)
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <!-- Product 4 -->
-                    <article class="product-card">
-
-                        <div class="product-image">
-
-                            <span class="product-badge discount">
-                                -15%
-                            </span>
-
-                            <button class="wishlist-btn">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-
-                            <img
-                                src="images/products/pizza-coke.jpg"
-                                alt="Pizza and Coke"
-                            >
-
-                        </div>
-
-                        <div class="product-info">
-
-                            <h3>Pizza & Coke</h3>
-
-                            <div class="product-bottom">
-
-                                <div class="price">
-                                    <strong>₦15,000</strong>
-                                    <del>₦17,500</del>
-                                </div>
-
-                                <span class="rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    4.6 (75)
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <!-- Product 5 -->
-                    <article class="product-card">
-
-                        <div class="product-image">
-
-                            <span class="product-badge new">
-                                New
-                            </span>
-
-                            <button class="wishlist-btn">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-
-                            <img
-                                src="images/products/luxury-perfume.jpg"
-                                alt="Luxury Perfume"
-                            >
-
-                        </div>
-
-                        <div class="product-info">
-
-                            <h3>Luxury Perfume</h3>
-
-                            <div class="product-bottom">
-
-                                <strong>₦45,000</strong>
-
-                                <span class="rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    4.8 (63)
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-
-                    <!-- Product 6 -->
-                    <article class="product-card">
-
-                        <div class="product-image">
-
-                            <span class="product-badge discount">
-                                -12%
-                            </span>
-
-                            <button class="wishlist-btn">
-                                <i class="fa-regular fa-heart"></i>
-                            </button>
-
-                            <img
-                                src="images/products/premium-watch.jpg"
-                                alt="Premium Watch"
-                            >
-
-                        </div>
-
-                        <div class="product-info">
-
-                            <h3>Premium Watch</h3>
-
-                            <div class="product-bottom">
-
-                                <div class="price">
-                                    <strong>₦85,000</strong>
-                                    <del>₦96,000</del>
-                                </div>
-
-                                <span class="rating">
-                                    <i class="fa-solid fa-star"></i>
-                                    4.9 (88)
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             PROMOTIONAL BANNER
-        ========================== -->
-
-        <section class="promo-section">
-
-            <div class="promo-container">
-
-                <div class="promo-icon">
-                    <i class="fa-solid fa-gift"></i>
-                </div>
-
-                <div class="promo-content">
-
-                    <h2>Surprise Your Loved Ones Today!</h2>
-
-                    <p>
-                        Send gifts to Nigeria and worldwide with Fame Store.
-                    </p>
-
-                </div>
-
-                <a href="shop.html" class="promo-btn">
-                    <i class="fa-solid fa-gift"></i>
-                    Send a Gift Now
-                </a>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             HOW IT WORKS
-        ========================== -->
+        <!-- ================= HOW IT WORKS ================= -->
 
         <section class="how-section" id="how-it-works">
 
-            <div class="section-container">
+            <div class="container">
 
                 <div class="section-title">
 
-                    <span>HOW IT WORKS</span>
-
-                    <h2>Send Love in 3 Simple Steps</h2>
+                    <h2>How It Works</h2>
 
                     <p>
-                        Sending a thoughtful gift has never been easier.
+                        Sending a gift is quick, easy and secure.
                     </p>
 
                 </div>
 
 
-                <div class="steps-grid">
+                <div class="steps">
 
-                    <div class="step-card">
+                    <div class="step">
 
-                        <div class="step-number">01</div>
+                        <span class="step-number">1</span>
 
-                        <i class="fa-solid fa-gift"></i>
+                        <div class="step-icon">
+                            🎁
+                        </div>
 
                         <h3>Choose a Gift</h3>
 
                         <p>
-                            Browse our collection and choose the perfect gift.
+                            Pick the perfect gift for your loved one.
                         </p>
 
                     </div>
 
 
-                    <div class="step-card">
+                    <div class="step">
 
-                        <div class="step-number">02</div>
+                        <span class="step-number">2</span>
 
-                        <i class="fa-solid fa-location-dot"></i>
+                        <div class="step-icon">
+                            📍
+                        </div>
 
                         <h3>Enter Delivery Details</h3>
 
                         <p>
-                            Tell us where and when you want the gift delivered.
+                            Provide your loved one's location and message.
                         </p>
 
                     </div>
 
 
-                    <div class="step-card">
+                    <div class="step">
 
-                        <div class="step-number">03</div>
+                        <span class="step-number">3</span>
 
-                        <i class="fa-solid fa-heart"></i>
+                        <div class="step-icon">
+                            💳
+                        </div>
 
-                        <h3>Make Someone Smile</h3>
+                        <h3>Make Payment</h3>
 
                         <p>
-                            We deliver your gift and help create a special moment.
+                            Pay securely using your preferred payment method.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <span class="step-number">4</span>
+
+                        <div class="step-icon">
+                            🚚
+                        </div>
+
+                        <h3>We Deliver the Gift</h3>
+
+                        <p>
+                            We handle the rest and deliver with care.
                         </p>
 
                     </div>
 
                 </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= WHY FAME STORE ================= -->
+
+        <section class="why-section">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <h2>Why Choose Fame Store?</h2>
+
+                </div>
+
+
+                <div class="why-grid">
+
+                    <div class="why-card">
+                        <div>💎</div>
+                        <h3>Wide Variety</h3>
+                        <p>Choose from many thoughtful gifts.</p>
+                    </div>
+
+                    <div class="why-card">
+                        <div>❤️</div>
+                        <h3>Reliable Delivery</h3>
+                        <p>We deliver gifts with care and speed.</p>
+                    </div>
+
+                    <div class="why-card">
+                        <div>👥</div>
+                        <h3>Great Support</h3>
+                        <p>Our team is here whenever you need help.</p>
+                    </div>
+
+                    <div class="why-card">
+                        <div>⭐</div>
+                        <h3>Trusted Service</h3>
+                        <p>Making gift giving simple and memorable.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CTA ================= -->
+
+        <section class="cta-section">
+
+            <div class="container cta-content">
+
+                <h2>
+                    Make Someone's Day Special ❤️
+                </h2>
+
+                <p>
+                    Send a thoughtful gift to someone you love today.
+                </p>
+
+                <a href="gifts.html" class="btn btn-primary btn-large">
+                    Send a Gift Now →
+                </a>
 
             </div>
 
@@ -938,152 +449,98 @@
     </main>
 
 
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
+    <!-- ================= FOOTER ================= -->
 
     <footer class="footer">
 
-        <div class="footer-container">
+        <div class="container footer-grid">
 
+            <div class="footer-brand">
 
-            <div class="footer-column footer-about">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🛍️</span>
 
-                <a href="index.html" class="footer-logo">
-                    <i class="fa-solid fa-gift"></i>
-                    <span>Fame Store</span>
+                    <div>
+                        <strong>Fame <span>Store</span></strong>
+                        <small>Send gifts 🎁, share love</small>
+                    </div>
                 </a>
 
                 <p>
-                    Send gifts. Share love. Make every moment special with
-                    Fame Store.
+                    Helping you express your love through thoughtful gifts,
+                    no matter where they are in the world.
                 </p>
-
-                <div class="social-links">
-
-                    <a href="#">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="fa-brands fa-tiktok"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
-
-                </div>
 
             </div>
 
 
             <div class="footer-column">
 
-                <h3>Shop</h3>
+                <h3>Quick Links</h3>
 
-                <a href="shop.html?category=flowers">Flowers</a>
-                <a href="shop.html?category=cakes">Cakes</a>
-                <a href="shop.html?category=chocolates">Chocolates</a>
-                <a href="shop.html?category=teddy-bears">Teddy Bears</a>
-                <a href="shop.html?category=gift-boxes">Gift Boxes</a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h3>Fame Store</h3>
-
-                <a href="#">About Us</a>
-                <a href="#">Contact Us</a>
-                <a href="#">How It Works</a>
-                <a href="#">FAQs</a>
-                <a href="#">Delivery Information</a>
+                <a href="index.html">Home</a>
+                <a href="gifts.html">Gifts</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
 
             </div>
 
 
             <div class="footer-column">
 
-                <h3>Support</h3>
+                <h3>Help & Support</h3>
 
-                <a href="#">Help Center</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
-                <a href="#">Refund Policy</a>
-                <a href="#">Track Order</a>
+                <a href="delivery.html">Delivery Information</a>
+                <a href="track-order.html">Track Order</a>
+                <a href="refund.html">Return & Refund</a>
+                <a href="faq.html">FAQ</a>
+                <a href="support.html">Contact Support</a>
 
             </div>
 
 
             <div class="footer-column">
 
-                <h3>Contact</h3>
+                <h3>Legal</h3>
 
-                <p>
-                    <i class="fa-solid fa-location-dot"></i>
-                    Nigeria
-                </p>
-
-                <p>
-                    <i class="fa-solid fa-envelope"></i>
-                    support@famestore.com
-                </p>
-
-                <p>
-                    <i class="fa-solid fa-phone"></i>
-                    +234 000 000 0000
-                </p>
+                <a href="terms.html">Terms & Conditions</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="refund.html">Refund Policy</a>
+                <a href="security.html">Security</a>
 
             </div>
 
         </div>
 
 
-        <!-- Bottom -->
         <div class="footer-bottom">
 
             <p>
                 © 2026 Fame Store. All rights reserved.
             </p>
 
-            <div class="footer-stats">
-
-                <span>
-                    <i class="fa-solid fa-globe"></i>
-                    200+ Countries
-                </span>
-
-                <span>
-                    <i class="fa-solid fa-users"></i>
-                    10,000+ Happy Customers
-                </span>
-
-                <span>
-                    <i class="fa-solid fa-shield-halved"></i>
-                    100% Secure Payment
-                </span>
-
-                <span>
-                    <i class="fa-solid fa-headset"></i>
-                    24/7 Support
-                </span>
-
-            </div>
+            <p>
+                Send gifts today, for a brighter tomorrow ❤️
+            </p>
 
         </div>
 
     </footer>
 
 
-    <!-- Main JavaScript -->
-    <script src="js/app.js"></script>
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("show");
+        });
+
+    </script>
 
 </body>
 </html>
