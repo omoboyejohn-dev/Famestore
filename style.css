@@ -956,3 +956,32 @@ button {
         font-size: 28px;
     }
 }
+/* ================= LOGIN OPTIONS ================= */
+
+.login-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: -3px 0 18px;
+    font-size: 12px;
+}
+
+.login-options label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #64748b;
+}
+
+.login-options input {
+    accent-color: #ff1744;
+}
+
+.login-options a {
+    color: #ff1744;
+    font-weight: 700;
+}
+
+.login-options a:hover {
+    text-decoration: underline;
+}
