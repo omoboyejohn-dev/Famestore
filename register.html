@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | Fame Store</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body class="auth-page">
+
+    <div class="auth-container">
+
+        <!-- Logo -->
+
+        <a href="index.html" class="auth-logo">
+            <span class="logo-icon">🛍️</span>
+
+            <div>
+                <strong>Fame <span>Store</span></strong>
+                <small>Send gifts 🎁, share love</small>
+            </div>
+        </a>
+
+
+        <!-- Register Card -->
+
+        <div class="auth-card">
+
+            <div class="auth-header">
+
+                <h1>Join Us Today</h1>
+
+                <p>
+                    Sign up today and experience the joy of gifting.
+                </p>
+
+            </div>
+
+
+            <form id="registerForm">
+
+                <!-- Full Name -->
+
+                <div class="form-group">
+
+                    <label for="fullName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Gmail -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Gmail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your Gmail address"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Create a password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Confirm Password -->
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm your password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Terms -->
+
+                <label class="terms">
+
+                    <input type="checkbox" id="terms" required>
+
+                    <span>
+                        I agree to the
+                        <a href="terms.html">Terms & Conditions</a>
+                        and
+                        <a href="privacy.html">Privacy Policy</a>.
+                    </span>
+
+                </label>
+
+
+                <!-- Error / Success -->
+
+                <div id="registerMessage"></div>
+
+
+                <!-- Button -->
+
+                <button
+                    type="submit"
+                    class="btn btn-primary auth-button"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <!-- Login -->
+
+            <div class="auth-footer">
+
+                <p>
+                    Already have an account?
+                    <a href="login.html">Login Account</a>
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a href="index.html" class="back-home">
+            ← Back to Fame Store
+        </a>
+
+    </div>
+
+
+    <script>
+
+        const registerForm =
+            document.getElementById("registerForm");
+
+        const registerMessage =
+            document.getElementById("registerMessage");
+
+        registerForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            const fullName =
+                document.getElementById("fullName").value.trim();
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+            const confirmPassword =
+                document.getElementById("confirmPassword").value;
+
+
+            if (password.length < 6) {
+
+                registerMessage.textContent =
+                    "Password must be at least 6 characters.";
+
+                registerMessage.className = "form-error";
+
+                return;
+            }
+
+
+            if (password !== confirmPassword) {
+
+                registerMessage.textContent =
+                    "Passwords do not match.";
+
+                registerMessage.className = "form-error";
+
+                return;
+            }
+
+
+            registerMessage.textContent =
+                "Registration form is ready.";
+
+            registerMessage.className = "form-success";
+
+        });
+
+    </script>
+
+</body>
+</html>
