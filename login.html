@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Fame Store</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body class="auth-page">
+
+    <div class="auth-container">
+
+        <!-- Logo -->
+
+        <a href="index.html" class="auth-logo">
+
+            <span class="logo-icon">🛍️</span>
+
+            <div>
+                <strong>Fame <span>Store</span></strong>
+                <small>Send gifts 🎁, share love</small>
+            </div>
+
+        </a>
+
+
+        <!-- Login Card -->
+
+        <div class="auth-card">
+
+            <div class="auth-header">
+
+                <h1>Welcome Back</h1>
+
+                <p>
+                    Login to your Fame Store account
+                </p>
+
+            </div>
+
+
+            <form id="loginForm">
+
+                <!-- Gmail -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Gmail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your Gmail address"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Remember / Forgot -->
+
+                <div class="login-options">
+
+                    <label>
+                        <input type="checkbox" id="rememberMe">
+                        Remember me
+                    </label>
+
+                    <a href="forgot-password.html">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+                <!-- Message -->
+
+                <div id="loginMessage"></div>
+
+
+                <!-- Login Button -->
+
+                <button
+                    type="submit"
+                    class="btn btn-primary auth-button"
+                >
+                    Login Account
+                </button>
+
+            </form>
+
+
+            <!-- Register -->
+
+            <div class="auth-footer">
+
+                <p>
+                    Don't have an account?
+                    <a href="register.html">
+                        Create Account
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a href="index.html" class="back-home">
+            ← Back to Fame Store
+        </a>
+
+    </div>
+
+
+    <script>
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+        const loginMessage =
+            document.getElementById("loginMessage");
+
+
+        loginForm.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+
+            if (!email || !password) {
+
+                loginMessage.textContent =
+                    "Please enter your Gmail and password.";
+
+                loginMessage.className = "form-error";
+
+                return;
+            }
+
+
+            loginMessage.textContent =
+                "Login form is ready.";
+
+            loginMessage.className = "form-success";
+
+        });
+
+    </script>
+
+</body>
+</html>
