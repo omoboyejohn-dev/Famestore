@@ -10,6 +10,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
@@ -20,19 +21,21 @@
 
     <div class="auth-container">
 
-        <!-- Logo -->
+        <!-- LOGO -->
 
         <a href="index.html" class="auth-logo">
+
             <span class="logo-icon">🛍️</span>
 
             <div>
                 <strong>Fame <span>Store</span></strong>
                 <small>Send gifts 🎁, share love</small>
             </div>
+
         </a>
 
 
-        <!-- Register Card -->
+        <!-- REGISTER CARD -->
 
         <div class="auth-card">
 
@@ -41,7 +44,7 @@
                 <h1>Join Us Today</h1>
 
                 <p>
-                    Sign up today and experience the joy of gifting.
+                    Sign up today and experience the joy of gifting
                 </p>
 
             </div>
@@ -49,7 +52,7 @@
 
             <form id="registerForm">
 
-                <!-- Full Name -->
+                <!-- FULL NAME -->
 
                 <div class="form-group">
 
@@ -61,13 +64,14 @@
                         type="text"
                         id="fullName"
                         placeholder="Enter your full name"
+                        autocomplete="name"
                         required
                     >
 
                 </div>
 
 
-                <!-- Gmail -->
+                <!-- GMAIL -->
 
                 <div class="form-group">
 
@@ -79,13 +83,14 @@
                         type="email"
                         id="email"
                         placeholder="Enter your Gmail address"
+                        autocomplete="email"
                         required
                     >
 
                 </div>
 
 
-                <!-- Password -->
+                <!-- PASSWORD -->
 
                 <div class="form-group">
 
@@ -97,13 +102,15 @@
                         type="password"
                         id="password"
                         placeholder="Create a password"
+                        autocomplete="new-password"
+                        minlength="6"
                         required
                     >
 
                 </div>
 
 
-                <!-- Confirm Password -->
+                <!-- CONFIRM PASSWORD -->
 
                 <div class="form-group">
 
@@ -115,17 +122,22 @@
                         type="password"
                         id="confirmPassword"
                         placeholder="Confirm your password"
+                        autocomplete="new-password"
                         required
                     >
 
                 </div>
 
 
-                <!-- Terms -->
+                <!-- TERMS -->
 
                 <label class="terms">
 
-                    <input type="checkbox" id="terms" required>
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        required
+                    >
 
                     <span>
                         I agree to the
@@ -137,16 +149,17 @@
                 </label>
 
 
-                <!-- Error / Success -->
+                <!-- MESSAGE -->
 
                 <div id="registerMessage"></div>
 
 
-                <!-- Button -->
+                <!-- CREATE ACCOUNT -->
 
                 <button
                     type="submit"
                     class="btn btn-primary auth-button"
+                    id="registerButton"
                 >
                     Create Account
                 </button>
@@ -154,13 +167,15 @@
             </form>
 
 
-            <!-- Login -->
+            <!-- LOGIN -->
 
             <div class="auth-footer">
 
                 <p>
                     Already have an account?
-                    <a href="login.html">Login Account</a>
+                    <a href="login.html">
+                        Login Account
+                    </a>
                 </p>
 
             </div>
@@ -175,7 +190,45 @@
     </div>
 
 
-    <script>
+    <!-- FIREBASE -->
+
+    <script type="module">
+
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            updateProfile
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+        const firebaseConfig = {
+
+            apiKey: "AIzaSyCnANua92lDErdMwoKQG3xN4NtILIcyrsk",
+
+            authDomain: "famestore-aaa70.firebaseapp.com",
+
+            projectId: "famestore-aaa70",
+
+            storageBucket: "famestore-aaa70.firebasestorage.app",
+
+            messagingSenderId: "906739139078",
+
+            appId: "1:906739139078:web:435561274e65d47eb33987",
+
+            measurementId: "G-H2429058CT"
+
+        };
+
+
+        const app = initializeApp(firebaseConfig);
+
+        const auth = getAuth(app);
+
 
         const registerForm =
             document.getElementById("registerForm");
@@ -183,51 +236,190 @@
         const registerMessage =
             document.getElementById("registerMessage");
 
-        registerForm.addEventListener("submit", function (event) {
-
-            event.preventDefault();
-
-            const fullName =
-                document.getElementById("fullName").value.trim();
-
-            const email =
-                document.getElementById("email").value.trim();
-
-            const password =
-                document.getElementById("password").value;
-
-            const confirmPassword =
-                document.getElementById("confirmPassword").value;
+        const registerButton =
+            document.getElementById("registerButton");
 
 
-            if (password.length < 6) {
+        function showMessage(message, type) {
 
-                registerMessage.textContent =
-                    "Password must be at least 6 characters.";
+            registerMessage.textContent = message;
 
-                registerMessage.className = "form-error";
+            registerMessage.className = type;
 
-                return;
+        }
+
+
+        registerForm.addEventListener(
+            "submit",
+            async (event) => {
+
+                event.preventDefault();
+
+
+                const fullName =
+                    document
+                        .getElementById("fullName")
+                        .value
+                        .trim();
+
+
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim();
+
+
+                const password =
+                    document
+                        .getElementById("password")
+                        .value;
+
+
+                const confirmPassword =
+                    document
+                        .getElementById("confirmPassword")
+                        .value;
+
+
+                if (fullName.length < 2) {
+
+                    showMessage(
+                        "Please enter your full name.",
+                        "form-error"
+                    );
+
+                    return;
+                }
+
+
+                if (password.length < 6) {
+
+                    showMessage(
+                        "Password must be at least 6 characters.",
+                        "form-error"
+                    );
+
+                    return;
+                }
+
+
+                if (password !== confirmPassword) {
+
+                    showMessage(
+                        "Passwords do not match.",
+                        "form-error"
+                    );
+
+                    return;
+                }
+
+
+                registerButton.disabled = true;
+
+                registerButton.textContent =
+                    "Creating Account...";
+
+
+                try {
+
+                    const userCredential =
+                        await createUserWithEmailAndPassword(
+                            auth,
+                            email,
+                            password
+                        );
+
+
+                    const user =
+                        userCredential.user;
+
+
+                    await updateProfile(user, {
+
+                        displayName: fullName
+
+                    });
+
+
+                    showMessage(
+                        "Account created successfully!",
+                        "form-success"
+                    );
+
+
+                    registerButton.textContent =
+                        "Account Created";
+
+
+                    setTimeout(() => {
+
+                        window.location.href =
+                            "dashboard.html";
+
+                    }, 1200);
+
+
+                } catch (error) {
+
+                    console.error(error);
+
+
+                    let message =
+                        "Unable to create your account. Please try again.";
+
+
+                    switch (error.code) {
+
+                        case "auth/email-already-in-use":
+
+                            message =
+                                "An account with this Gmail already exists.";
+
+                            break;
+
+
+                        case "auth/invalid-email":
+
+                            message =
+                                "Please enter a valid Gmail address.";
+
+                            break;
+
+
+                        case "auth/weak-password":
+
+                            message =
+                                "Password is too weak. Use at least 6 characters.";
+
+                            break;
+
+
+                        case "auth/network-request-failed":
+
+                            message =
+                                "Network error. Please check your internet connection.";
+
+                            break;
+
+                    }
+
+
+                    showMessage(
+                        message,
+                        "form-error"
+                    );
+
+
+                    registerButton.disabled = false;
+
+                    registerButton.textContent =
+                        "Create Account";
+
+                }
+
             }
-
-
-            if (password !== confirmPassword) {
-
-                registerMessage.textContent =
-                    "Passwords do not match.";
-
-                registerMessage.className = "form-error";
-
-                return;
-            }
-
-
-            registerMessage.textContent =
-                "Registration form is ready.";
-
-            registerMessage.className = "form-success";
-
-        });
+        );
 
     </script>
 
