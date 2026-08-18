@@ -985,3 +985,625 @@ button {
 .login-options a:hover {
     text-decoration: underline;
 }
+/* =====================================================
+   FAME STORE CUSTOMER DASHBOARD
+===================================================== */
+
+.dashboard-page {
+    background: #f8fafc;
+    color: #111827;
+}
+
+
+/* ================= DASHBOARD HEADER ================= */
+
+.dashboard-header {
+    background: #ffffff;
+    border-bottom: 1px solid #edf0f3;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.dashboard-container {
+    width: min(1180px, 92%);
+    margin: 0 auto;
+}
+
+.dashboard-nav {
+    min-height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.dashboard-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard-logo strong {
+    display: block;
+    font-size: 21px;
+    line-height: 1.1;
+}
+
+.dashboard-logo strong span {
+    color: #ff1744;
+}
+
+.dashboard-logo small {
+    display: block;
+    color: #64748b;
+    font-size: 10px;
+}
+
+.dashboard-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #ffe1e7;
+    color: #ff1744;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.user-name-area strong {
+    display: block;
+    font-size: 14px;
+}
+
+.user-name-area small {
+    display: block;
+    color: #64748b;
+    font-size: 11px;
+}
+
+
+/* ================= MAIN ================= */
+
+.dashboard-main {
+    padding: 45px 0 80px;
+}
+
+
+/* ================= WELCOME ================= */
+
+.dashboard-welcome {
+    margin-bottom: 28px;
+}
+
+.welcome-label {
+    margin-bottom: 7px;
+    color: #ff1744;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.dashboard-welcome h1 {
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.15;
+    margin-bottom: 8px;
+}
+
+.dashboard-welcome h1 span {
+    color: #ff1744;
+}
+
+.dashboard-welcome > div > p:last-child {
+    color: #64748b;
+}
+
+
+/* ================= BALANCE ================= */
+
+.balance-card {
+    min-height: 180px;
+    padding: 30px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    border-radius: 20px;
+    background:
+        linear-gradient(
+            120deg,
+            #fff0f3,
+            #ffffff
+        );
+    border: 1px solid #f4dce2;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.05);
+}
+
+.balance-info span {
+    display: block;
+    color: #64748b;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.balance-info h2 {
+    font-size: 38px;
+    line-height: 1.1;
+    margin-bottom: 7px;
+}
+
+.balance-info small {
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.dashboard-deposit-btn {
+    min-height: 48px;
+    padding: 0 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #ff1744;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.dashboard-deposit-btn:hover {
+    background: #e90035;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 23, 68, 0.2);
+}
+
+
+/* ================= QUICK ACTIONS ================= */
+
+.quick-section {
+    margin-bottom: 55px;
+}
+
+.dashboard-section-title {
+    margin-bottom: 20px;
+}
+
+.dashboard-section-title h2 {
+    font-size: 25px;
+    margin-bottom: 4px;
+}
+
+.dashboard-section-title p {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.quick-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.quick-card {
+    min-height: 145px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border: 1px solid #e9edf1;
+    border-radius: 15px;
+    background: white;
+    color: #111827;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.quick-card:hover {
+    border-color: #ffc1cc;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+}
+
+.quick-icon {
+    width: 45px;
+    height: 45px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 13px;
+    border-radius: 12px;
+    background: #fff0f3;
+    font-size: 21px;
+}
+
+.quick-card strong {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.quick-card span {
+    color: #94a3b8;
+    font-size: 11px;
+}
+
+.logout-card {
+    font-family: inherit;
+}
+
+
+/* ================= COUNTRY ================= */
+
+.country-section {
+    padding: 35px;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid #e9edf1;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+.country-heading {
+    margin-bottom: 25px;
+}
+
+.country-heading h2 {
+    font-size: 28px;
+    margin-bottom: 7px;
+}
+
+.country-heading p:last-child {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.country-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.country-card {
+    min-height: 82px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #e8ebef;
+    border-radius: 12px;
+    background: #ffffff;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+    transition: 0.25s ease;
+}
+
+.country-card:hover {
+    border-color: #ff9bad;
+    background: #fff7f8;
+    transform: translateY(-2px);
+}
+
+.country-card.selected {
+    border-color: #ff1744;
+    background: #fff0f3;
+    box-shadow: 0 0 0 2px rgba(255, 23, 68, 0.08);
+}
+
+.country-card span {
+    font-size: 28px;
+}
+
+.country-card strong {
+    font-size: 13px;
+}
+
+.other-country-card {
+    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
+    text-align: center;
+}
+
+.other-country-card span {
+    font-size: 20px;
+    color: #ff1744;
+    letter-spacing: 2px;
+}
+
+
+/* ================= SELECTED COUNTRY ================= */
+
+.selected-country {
+    margin-top: 20px;
+    padding: 15px 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 10px;
+    background: #fff0f3;
+    color: #475569;
+    font-size: 13px;
+}
+
+.selected-country strong {
+    color: #ff1744;
+}
+
+.selected-country button {
+    margin-left: auto;
+    padding: 9px 15px;
+    border: none;
+    border-radius: 7px;
+    background: #ff1744;
+    color: white;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+/* ================= OTHER COUNTRY FORM ================= */
+
+.other-country-form {
+    margin-top: 25px;
+    padding: 25px;
+    border-radius: 15px;
+    background: #fff7f8;
+    border: 1px solid #f4dce2;
+}
+
+.other-country-form h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.other-country-form > p {
+    color: #64748b;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.other-country-input {
+    display: flex;
+    gap: 10px;
+}
+
+.other-country-input input {
+    flex: 1;
+    height: 48px;
+    padding: 0 14px;
+    border: 1px solid #dfe3e8;
+    border-radius: 9px;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.other-country-input input:focus {
+    border-color: #ff1744;
+}
+
+
+/* ================= DASHBOARD FOOTER ================= */
+
+.dashboard-footer {
+    background: #101827;
+    color: white;
+    padding-top: 55px;
+}
+
+.footer-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding-bottom: 45px;
+}
+
+.dashboard-footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.dashboard-footer-column h3 {
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+.dashboard-footer-column a {
+    color: #a9b2c1;
+    font-size: 13px;
+    transition: 0.25s;
+}
+
+.dashboard-footer-column a:hover {
+    color: #ff496b;
+}
+
+.secure-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.secure-item span {
+    font-size: 19px;
+}
+
+.secure-item p {
+    color: #a9b2c1;
+    font-size: 13px;
+}
+
+.dashboard-footer-bottom {
+    border-top: 1px solid #273143;
+}
+
+.dashboard-footer-bottom .dashboard-container {
+    min-height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.dashboard-footer-bottom p {
+    color: #8e99aa;
+    font-size: 12px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1000px) {
+
+    .quick-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .country-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer-dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .dashboard-main {
+        padding: 30px 0 55px;
+    }
+
+    .dashboard-user {
+        display: none;
+    }
+
+    .balance-card {
+        padding: 22px;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .balance-info h2 {
+        font-size: 32px;
+    }
+
+    .dashboard-deposit-btn {
+        width: 100%;
+    }
+
+    .quick-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .country-section {
+        padding: 22px 17px;
+    }
+
+    .country-heading h2 {
+        font-size: 23px;
+    }
+
+    .country-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .country-card {
+        min-height: 70px;
+        padding: 12px;
+    }
+
+    .country-card span {
+        font-size: 23px;
+    }
+
+    .country-card strong {
+        font-size: 12px;
+    }
+
+    .selected-country {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .selected-country button {
+        width: 100%;
+        margin: 5px 0 0;
+    }
+
+    .other-country-input {
+        flex-direction: column;
+    }
+
+    .other-country-input .btn {
+        width: 100%;
+    }
+
+    .footer-dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .dashboard-footer-bottom .dashboard-container {
+        min-height: 90px;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+}
+
+
+@media (max-width: 430px) {
+
+    .dashboard-logo strong {
+        font-size: 18px;
+    }
+
+    .dashboard-welcome h1 {
+        font-size: 28px;
+    }
+
+    .quick-grid {
+        gap: 9px;
+    }
+
+    .quick-card {
+        min-height: 130px;
+        padding: 15px;
+    }
+
+    .quick-card strong {
+        font-size: 13px;
+    }
+
+    .country-grid {
+        gap: 8px;
+    }
+
+    .country-card {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 4px;
+    }
+
+    .footer-dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
