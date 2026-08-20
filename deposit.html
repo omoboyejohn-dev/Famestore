@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Deposit | Fame Store</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body class="deposit-page">
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="deposit-header">
+
+        <div class="deposit-container deposit-nav">
+
+            <a
+                href="dashboard.html"
+                class="deposit-logo"
+            >
+
+                <span>
+                    🛍️
+                </span>
+
+                <div>
+
+                    <strong>
+                        Fame <b>Store</b>
+                    </strong>
+
+                    <small>
+                        Send gifts 🎁, share love
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <a
+                href="dashboard.html"
+                class="deposit-back"
+            >
+                ← Dashboard
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="deposit-main">
+
+        <div class="deposit-container">
+
+
+            <!-- ================= INTRO ================= -->
+
+            <section class="deposit-intro">
+
+                <span class="deposit-label">
+                    WALLET DEPOSIT
+                </span>
+
+                <h1>
+                    Deposit to your wallet
+                </h1>
+
+                <p>
+                    Make a bank transfer to the account below,
+                    then confirm your payment.
+                </p>
+
+            </section>
+
+
+
+            <!-- ================= BANK CARD ================= -->
+
+            <section class="bank-account-card">
+
+                <div class="bank-card-top">
+
+                    <div>
+
+                        <span class="bank-label">
+                            DEPOSIT ACCOUNT
+                        </span>
+
+                        <h2>
+                            TENN- MFB
+                        </h2>
+
+                    </div>
+
+                    <div class="bank-icon">
+                        🏦
+                    </div>
+
+                </div>
+
+
+
+                <!-- ACCOUNT NUMBER -->
+
+                <div class="bank-detail">
+
+                    <span>
+                        Account Number
+                    </span>
+
+                    <div class="bank-detail-row">
+
+                        <strong>
+                            5777198543
+                        </strong>
+
+                        <button
+                            type="button"
+                            onclick="copyAccountNumber()"
+                        >
+                            Copy
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ACCOUNT NAME -->
+
+                <div class="bank-detail">
+
+                    <span>
+                        Account Name
+                    </span>
+
+                    <strong>
+                        Promise Omowumi Adeyeye
+                    </strong>
+
+                </div>
+
+
+
+                <!-- NOTICE -->
+
+                <div class="deposit-notice">
+
+                    <span>
+                        ⚠️
+                    </span>
+
+                    <p>
+                        Transfer only to the account details
+                        displayed above. Make sure the account
+                        name and number are correct before
+                        making your payment.
+                    </p>
+
+                </div>
+
+
+
+                <!-- PAID BUTTON -->
+
+                <button
+                    type="button"
+                    class="paid-button"
+                    onclick="showPaymentForm()"
+                >
+                    I Have Paid
+                </button>
+
+            </section>
+
+
+
+            <!-- ================= PAYMENT FORM ================= -->
+
+            <section
+                id="paymentForm"
+                class="payment-form-card"
+                style="display: none;"
+            >
+
+                <div class="form-heading">
+
+                    <span>
+                        PAYMENT CONFIRMATION
+                    </span>
+
+                    <h2>
+                        Confirm your payment
+                    </h2>
+
+                    <p>
+                        Enter the details of the transfer
+                        you just made.
+                    </p>
+
+                </div>
+
+
+
+                <form
+                    id="depositForm"
+                    onsubmit="submitDeposit(event)"
+                >
+
+
+                    <!-- AMOUNT -->
+
+                    <div class="form-group">
+
+                        <label for="depositAmount">
+                            Deposit Amount
+                        </label>
+
+                        <div class="amount-input">
+
+                            <span>
+                                ₦
+                            </span>
+
+                            <input
+                                type="number"
+                                id="depositAmount"
+                                placeholder="Enter amount"
+                                min="1"
+                                step="0.01"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- SENDER NAME -->
+
+                    <div class="form-group">
+
+                        <label for="senderName">
+                            Sender Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="senderName"
+                            placeholder="Name used for the transfer"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- TRANSACTION REFERENCE -->
+
+                    <div class="form-group">
+
+                        <label for="transactionReference">
+                            Transaction Reference
+                        </label>
+
+                        <input
+                            type="text"
+                            id="transactionReference"
+                            placeholder="Enter transaction reference"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        class="submit-deposit-button"
+                        id="submitDepositButton"
+                    >
+                        Submit Deposit
+                    </button>
+
+                </form>
+
+
+                <!-- SUCCESS -->
+
+                <div
+                    id="depositSuccess"
+                    class="deposit-success"
+                    style="display: none;"
+                >
+
+                    <div class="success-icon">
+                        ✓
+                    </div>
+
+                    <h2>
+                        Deposit Submitted
+                    </h2>
+
+                    <p>
+                        Your payment has been submitted
+                        successfully and is waiting for review.
+                    </p>
+
+                    <a
+                        href="dashboard.html"
+                        class="success-dashboard-button"
+                    >
+                        Back to Dashboard
+                    </a>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="deposit-footer">
+
+        <div class="deposit-container">
+
+            <div class="deposit-footer-grid">
+
+                <div>
+
+                    <h3>
+                        Fame Store
+                    </h3>
+
+                    <p>
+                        Send gifts 🎁, share love ❤️
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Company
+                    </h4>
+
+                    <a href="about.html">
+                        About Us
+                    </a>
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Support
+                    </h4>
+
+                    <a href="faq.html">
+                        FAQ
+                    </a>
+
+                    <a href="support.html">
+                        Help Center
+                    </a>
+
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Secure & Trusted
+                    </h4>
+
+                    <p>
+                        🔒 Secure Payments
+                    </p>
+
+                    <p>
+                        🌎 Global Delivery
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="deposit-footer-bottom">
+
+                <p>
+                    © 2026 Fame Store. All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* ============================================
+           COPY ACCOUNT NUMBER
+        ============================================ */
+
+        function copyAccountNumber() {
+
+            const accountNumber =
+                "5777198543";
+
+
+            navigator.clipboard
+                .writeText(accountNumber)
+                .then(() => {
+
+                    alert(
+                        "Account number copied."
+                    );
+
+                })
+                .catch(() => {
+
+                    alert(
+                        "Account Number: " +
+                        accountNumber
+                    );
+
+                });
+
+        }
+
+
+
+        /* ============================================
+           SHOW PAYMENT FORM
+        ============================================ */
+
+        function showPaymentForm() {
+
+            const form =
+                document.getElementById(
+                    "paymentForm"
+                );
+
+
+            form.style.display =
+                "block";
+
+
+            form.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+
+
+        /* ============================================
+           SUBMIT DEPOSIT
+           
+           Firebase will be connected in the next step.
+        ============================================ */
+
+        function submitDeposit(event) {
+
+            event.preventDefault();
+
+
+            const amount =
+                document.getElementById(
+                    "depositAmount"
+                ).value;
+
+
+            const senderName =
+                document.getElementById(
+                    "senderName"
+                ).value.trim();
+
+
+            const reference =
+                document.getElementById(
+                    "transactionReference"
+                ).value.trim();
+
+
+            if (!amount || amount <= 0) {
+
+                alert(
+                    "Please enter a valid deposit amount."
+                );
+
+                return;
+
+            }
+
+
+            if (!senderName) {
+
+                alert(
+                    "Please enter the sender name."
+                );
+
+                return;
+
+            }
+
+
+            if (!reference) {
+
+                alert(
+                    "Please enter the transaction reference."
+                );
+
+                return;
+
+            }
+
+
+            /*
+             * TEMPORARY
+             *
+             * We will connect this to Firebase
+             * Firestore in the next step.
+             */
+
+            const depositData = {
+
+                amount:
+                    Number(amount),
+
+                senderName:
+                    senderName,
+
+                transactionReference:
+                    reference,
+
+                bankName:
+                    "TENN- MFB",
+
+                accountNumber:
+                    "5777198543",
+
+                accountName:
+                    "Promise Omowumi Adeyeye",
+
+                status:
+                    "pending",
+
+                createdAt:
+                    new Date().toISOString()
+
+            };
+
+
+            localStorage.setItem(
+                "pendingDeposit",
+                JSON.stringify(
+                    depositData
+                )
+            );
+
+
+            /*
+             * SHOW SUCCESS
+             */
+
+            document.getElementById(
+                "depositForm"
+            ).style.display =
+                "none";
+
+
+            document.getElementById(
+                "depositSuccess"
+            ).style.display =
+                "block";
+
+
+            document.getElementById(
+                "depositSuccess"
+            ).scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }
+
+    </script>
+
+
+</body>
+
+  </html>
