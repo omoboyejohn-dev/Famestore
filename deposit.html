@@ -149,7 +149,7 @@
 
                         <button
                             type="button"
-                            onclick="copyAccountNumber()"
+                            id="copyAccountButton"
                         >
                             Copy
                         </button>
@@ -200,7 +200,7 @@
                 <button
                     type="button"
                     class="paid-button"
-                    onclick="showPaymentForm()"
+                    id="paidButton"
                 >
                     I Have Paid
                 </button>
@@ -236,10 +236,7 @@
 
 
 
-                <form
-                    id="depositForm"
-                    onsubmit="submitDeposit(event)"
-                >
+                <form id="depositForm">
 
 
                     <!-- AMOUNT -->
@@ -323,7 +320,8 @@
                 </form>
 
 
-                <!-- SUCCESS -->
+
+                <!-- ================= SUCCESS ================= -->
 
                 <div
                     id="depositSuccess"
@@ -370,6 +368,7 @@
 
             <div class="deposit-footer-grid">
 
+
                 <div>
 
                     <h3>
@@ -381,6 +380,7 @@
                     </p>
 
                 </div>
+
 
 
                 <div>
@@ -400,6 +400,7 @@
                 </div>
 
 
+
                 <div>
 
                     <h4>
@@ -415,6 +416,7 @@
                     </a>
 
                 </div>
+
 
 
                 <div>
@@ -433,6 +435,7 @@
 
                 </div>
 
+
             </div>
 
 
@@ -450,39 +453,154 @@
 
 
 
-    <!-- ================= JAVASCRIPT ================= -->
+    <!-- ================= FIREBASE ================= -->
 
-    <script>
+    <script type="module">
+
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+        import {
+            getAuth,
+            onAuthStateChanged
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+        import {
+            getFirestore,
+            collection,
+            addDoc,
+            serverTimestamp
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+
+
+        /* ============================================
+           FIREBASE CONFIG
+        ============================================ */
+
+        const firebaseConfig = {
+
+            apiKey:
+                "AIzaSyCnANua92lDErdMwoKQG3xN4NtILIcyrsk",
+
+            authDomain:
+                "famestore-aaa70.firebaseapp.com",
+
+            projectId:
+                "famestore-aaa70",
+
+            storageBucket:
+                "famestore-aaa70.firebasestorage.app",
+
+            messagingSenderId:
+                "906739139078",
+
+            appId:
+                "1:906739139078:web:435561274e65d47eb33987",
+
+            measurementId:
+                "G-H2429058CT"
+
+        };
+
+
+
+        /* ============================================
+           INITIALIZE FIREBASE
+        ============================================ */
+
+        const app =
+            initializeApp(
+                firebaseConfig
+            );
+
+
+        const auth =
+            getAuth(app);
+
+
+        const db =
+            getFirestore(app);
+
+
+
+        /* ============================================
+           CURRENT USER
+        ============================================ */
+
+        let currentUser = null;
+
+
+        onAuthStateChanged(
+            auth,
+            (user) => {
+
+                if (!user) {
+
+                    currentUser = null;
+
+                    alert(
+                        "Please login to make a deposit."
+                    );
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+
+                currentUser = user;
+
+            }
+        );
+
+
 
         /* ============================================
            COPY ACCOUNT NUMBER
         ============================================ */
 
-        function copyAccountNumber() {
+        document
+            .getElementById(
+                "copyAccountButton"
+            )
+            .addEventListener(
+                "click",
+                async () => {
 
-            const accountNumber =
-                "5777198543";
+                    const accountNumber =
+                        "5777198543";
 
 
-            navigator.clipboard
-                .writeText(accountNumber)
-                .then(() => {
+                    try {
 
-                    alert(
-                        "Account number copied."
-                    );
+                        await navigator
+                            .clipboard
+                            .writeText(
+                                accountNumber
+                            );
 
-                })
-                .catch(() => {
 
-                    alert(
-                        "Account Number: " +
-                        accountNumber
-                    );
+                        alert(
+                            "Account number copied."
+                        );
 
-                });
+                    } catch (error) {
 
-        }
+                        alert(
+                            "Account Number: " +
+                            accountNumber
+                        );
+
+                    }
+
+                }
+            );
 
 
 
@@ -490,161 +608,264 @@
            SHOW PAYMENT FORM
         ============================================ */
 
-        function showPaymentForm() {
+        document
+            .getElementById(
+                "paidButton"
+            )
+            .addEventListener(
+                "click",
+                () => {
 
-            const form =
-                document.getElementById(
-                    "paymentForm"
-                );
+                    const form =
+                        document.getElementById(
+                            "paymentForm"
+                        );
 
 
-            form.style.display =
-                "block";
+                    form.style.display =
+                        "block";
 
 
-            form.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+                    form.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
 
-        }
+                }
+            );
 
 
 
         /* ============================================
            SUBMIT DEPOSIT
-           
-           Firebase will be connected in the next step.
         ============================================ */
 
-        function submitDeposit(event) {
-
-            event.preventDefault();
-
-
-            const amount =
-                document.getElementById(
-                    "depositAmount"
-                ).value;
-
-
-            const senderName =
-                document.getElementById(
-                    "senderName"
-                ).value.trim();
-
-
-            const reference =
-                document.getElementById(
-                    "transactionReference"
-                ).value.trim();
-
-
-            if (!amount || amount <= 0) {
-
-                alert(
-                    "Please enter a valid deposit amount."
-                );
-
-                return;
-
-            }
-
-
-            if (!senderName) {
-
-                alert(
-                    "Please enter the sender name."
-                );
-
-                return;
-
-            }
-
-
-            if (!reference) {
-
-                alert(
-                    "Please enter the transaction reference."
-                );
-
-                return;
-
-            }
-
-
-            /*
-             * TEMPORARY
-             *
-             * We will connect this to Firebase
-             * Firestore in the next step.
-             */
-
-            const depositData = {
-
-                amount:
-                    Number(amount),
-
-                senderName:
-                    senderName,
-
-                transactionReference:
-                    reference,
-
-                bankName:
-                    "TENN- MFB",
-
-                accountNumber:
-                    "5777198543",
-
-                accountName:
-                    "Promise Omowumi Adeyeye",
-
-                status:
-                    "pending",
-
-                createdAt:
-                    new Date().toISOString()
-
-            };
-
-
-            localStorage.setItem(
-                "pendingDeposit",
-                JSON.stringify(
-                    depositData
-                )
-            );
-
-
-            /*
-             * SHOW SUCCESS
-             */
-
-            document.getElementById(
+        document
+            .getElementById(
                 "depositForm"
-            ).style.display =
-                "none";
+            )
+            .addEventListener(
+                "submit",
+                async (event) => {
+
+                    event.preventDefault();
 
 
-            document.getElementById(
-                "depositSuccess"
-            ).style.display =
-                "block";
+                    if (!currentUser) {
+
+                        alert(
+                            "Please login before submitting a deposit."
+                        );
+
+                        return;
+
+                    }
 
 
-            document.getElementById(
-                "depositSuccess"
-            ).scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
 
-        }
+                    /* ============================
+                       GET FORM VALUES
+                    ============================ */
+
+                    const amount =
+                        Number(
+                            document
+                                .getElementById(
+                                    "depositAmount"
+                                )
+                                .value
+                        );
+
+
+                    const senderName =
+                        document
+                            .getElementById(
+                                "senderName"
+                            )
+                            .value
+                            .trim();
+
+
+                    const transactionReference =
+                        document
+                            .getElementById(
+                                "transactionReference"
+                            )
+                            .value
+                            .trim();
+
+
+
+                    /* ============================
+                       VALIDATION
+                    ============================ */
+
+                    if (
+                        !Number.isFinite(amount) ||
+                        amount <= 0
+                    ) {
+
+                        alert(
+                            "Please enter a valid deposit amount."
+                        );
+
+                        return;
+
+                    }
+
+
+                    if (!senderName) {
+
+                        alert(
+                            "Please enter the sender name."
+                        );
+
+                        return;
+
+                    }
+
+
+                    if (!transactionReference) {
+
+                        alert(
+                            "Please enter the transaction reference."
+                        );
+
+                        return;
+
+                    }
+
+
+
+                    /* ============================
+                       BUTTON
+                    ============================ */
+
+                    const submitButton =
+                        document
+                            .getElementById(
+                                "submitDepositButton"
+                            );
+
+
+                    submitButton.disabled =
+                        true;
+
+
+                    submitButton.textContent =
+                        "Submitting...";
+
+
+
+                    try {
+
+
+                        /* ============================
+                           CREATE DEPOSIT REQUEST
+                        ============================ */
+
+                        await addDoc(
+                            collection(
+                                db,
+                                "deposits"
+                            ),
+                            {
+
+                                userId:
+                                    currentUser.uid,
+
+                                customerEmail:
+                                    currentUser.email ||
+                                    "",
+
+                                amount:
+                                    amount,
+
+                                senderName:
+                                    senderName,
+
+                                transactionReference:
+                                    transactionReference,
+
+                                bankName:
+                                    "TENN- MFB",
+
+                                accountNumber:
+                                    "5777198543",
+
+                                accountName:
+                                    "Promise Omowumi Adeyeye",
+
+                                status:
+                                    "pending",
+
+                                createdAt:
+                                    serverTimestamp()
+
+                            }
+                        );
+
+
+
+                        /* ============================
+                           SUCCESS
+                        ============================ */
+
+                        document
+                            .getElementById(
+                                "depositForm"
+                            )
+                            .style.display =
+                            "none";
+
+
+                        document
+                            .getElementById(
+                                "depositSuccess"
+                            )
+                            .style.display =
+                            "block";
+
+
+                        document
+                            .getElementById(
+                                "depositSuccess"
+                            )
+                            .scrollIntoView({
+                                behavior: "smooth",
+                                block: "center"
+                            });
+
+
+                    } catch (error) {
+
+
+                        console.error(
+                            "Deposit submission error:",
+                            error
+                        );
+
+
+                        alert(
+                            "Unable to submit deposit. Please try again."
+                        );
+
+
+                        submitButton.disabled =
+                            false;
+
+
+                        submitButton.textContent =
+                            "Submit Deposit";
+
+                    }
+
+                }
+            );
 
     </script>
 
 
 </body>
 
-  </html>
+</html>
