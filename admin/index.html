@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Login | Fame Store</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: #f7f8fb;
+            color: #172033;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        .admin-login {
+            width: 100%;
+            max-width: 430px;
+            padding: 35px;
+            background: #ffffff;
+            border: 1px solid #e7eaf0;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 15px;
+            display: grid;
+            place-items: center;
+            border-radius: 18px;
+            background: #fff0f5;
+            font-size: 31px;
+        }
+
+        .logo h1 {
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .logo h1 span {
+            color: #ed1761;
+        }
+
+        .logo p {
+            margin-top: 5px;
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        .admin-badge {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 6px 11px;
+            border-radius: 20px;
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            color: #334155;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        input {
+            width: 100%;
+            height: 50px;
+            padding: 0 14px;
+            border: 1px solid #dce2e8;
+            border-radius: 9px;
+            outline: none;
+            font-family: inherit;
+            font-size: 13px;
+        }
+
+        input:focus {
+            border-color: #ed1761;
+            box-shadow: 0 0 0 3px rgba(237, 23, 97, 0.08);
+        }
+
+        .login-button {
+            width: 100%;
+            height: 50px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 9px;
+            background: #ed1761;
+            color: #ffffff;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .login-button:hover {
+            background: #d90d53;
+        }
+
+        .login-button:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        .error-message {
+            display: none;
+            margin-bottom: 18px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #fff1f2;
+            color: #be123c;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .footer-note {
+            margin-top: 25px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 10px;
+        }
+
+        @media (max-width: 480px) {
+
+            .admin-login {
+                padding: 25px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="admin-login">
+
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                🛍️
+            </div>
+
+            <h1>
+                Fame <span>Store</span>
+            </h1>
+
+            <p>
+                Administration Panel
+            </p>
+
+            <span class="admin-badge">
+                ADMIN ACCESS
+            </span>
+
+        </div>
+
+
+        <div
+            id="errorMessage"
+            class="error-message"
+        ></div>
+
+
+        <form id="adminLoginForm">
+
+
+            <div class="form-group">
+
+                <label for="adminEmail">
+                    Admin Email
+                </label>
+
+                <input
+                    type="email"
+                    id="adminEmail"
+                    placeholder="Enter admin email"
+                    autocomplete="email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="adminPassword">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="adminPassword"
+                    placeholder="Enter admin password"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-button"
+                id="loginButton"
+            >
+                Login to Admin
+            </button>
+
+
+        </form>
+
+
+        <p class="footer-note">
+            © 2026 Fame Store. Authorized access only.
+        </p>
+
+
+    </main>
+
+
+
+    <!-- ================= FIREBASE ================= -->
+
+    <script type="module">
+
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+        import {
+            getAuth,
+            signInWithEmailAndPassword
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+
+        const firebaseConfig = {
+
+            apiKey:
+                "AIzaSyCnANua92lDErdMwoKQG3xN4NtILIcyrsk",
+
+            authDomain:
+                "famestore-aaa70.firebaseapp.com",
+
+            projectId:
+                "famestore-aaa70",
+
+            storageBucket:
+                "famestore-aaa70.firebasestorage.app",
+
+            messagingSenderId:
+                "906739139078",
+
+            appId:
+                "1:906739139078:web:435561274e65d47eb33987",
+
+            measurementId:
+                "G-H2429058CT"
+
+        };
+
+
+        const app =
+            initializeApp(
+                firebaseConfig
+            );
+
+
+        const auth =
+            getAuth(app);
+
+
+        const form =
+            document.getElementById(
+                "adminLoginForm"
+            );
+
+
+        const button =
+            document.getElementById(
+                "loginButton"
+            );
+
+
+        const errorMessage =
+            document.getElementById(
+                "errorMessage"
+            );
+
+
+
+        form.addEventListener(
+            "submit",
+            async (event) => {
+
+                event.preventDefault();
+
+
+                const email =
+                    document
+                        .getElementById(
+                            "adminEmail"
+                        )
+                        .value
+                        .trim();
+
+
+                const password =
+                    document
+                        .getElementById(
+                            "adminPassword"
+                        )
+                        .value;
+
+
+                errorMessage.style.display =
+                    "none";
+
+
+                button.disabled =
+                    true;
+
+
+                button.textContent =
+                    "Signing in...";
+
+
+                try {
+
+                    await signInWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+
+                    /*
+                     * Login successful.
+                     *
+                     * The admin dashboard will be
+                     * created in the next step.
+                     */
+
+                    window.location.href =
+                        "dashboard.html";
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Admin login error:",
+                        error
+                    );
+
+
+                    let message =
+                        "Unable to sign in. Please check your email and password.";
+
+
+                    if (
+                        error.code ===
+                        "auth/invalid-credential"
+                    ) {
+
+                        message =
+                            "Invalid admin email or password.";
+
+                    } else if (
+                        error.code ===
+                        "auth/user-not-found"
+                    ) {
+
+                        message =
+                            "No account was found with this email.";
+
+                    } else if (
+                        error.code ===
+                        "auth/wrong-password"
+                    ) {
+
+                        message =
+                            "Incorrect password.";
+
+                    } else if (
+                        error.code ===
+                        "auth/too-many-requests"
+                    ) {
+
+                        message =
+                            "Too many attempts. Please try again later.";
+
+                    }
+
+
+                    errorMessage.textContent =
+                        message;
+
+
+                    errorMessage.style.display =
+                        "block";
+
+
+                    button.disabled =
+                        false;
+
+
+                    button.textContent =
+                        "Login to Admin";
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
