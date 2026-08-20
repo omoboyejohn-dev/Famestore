@@ -2,15 +2,15 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Deposit Management | Fame Store</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
@@ -18,365 +18,289 @@
     >
 
     <style>
-
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
         body {
-            background: #f7f8fb;
-            color: #172033;
+            margin: 0;
+            background: #f6f8f7;
             font-family: "DM Sans", sans-serif;
+            color: #17201b;
         }
 
-        button {
-            font-family: inherit;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
+        .admin-page {
+            width: 92%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px 0 60px;
         }
 
         .admin-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
             background: #fff;
-            border-bottom: 1px solid #e8ebef;
-        }
+            border: 1px solid #e5ebe7;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
 
-        .header-inner {
-            width: min(1200px, 94%);
-            min-height: 72px;
-            margin: auto;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            gap: 20px;
-        }
-
-        .brand {
-            display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
 
-        .brand-icon {
-            width: 42px;
-            height: 42px;
-            display: grid;
-            place-items: center;
-            border-radius: 11px;
-            background: #fff0f5;
-            font-size: 21px;
+        .admin-header h1 {
+            margin: 0 0 5px;
+            font-size: 25px;
         }
 
-        .brand strong {
-            display: block;
-            font-size: 18px;
+        .admin-header p {
+            margin: 0;
+            color: #69736d;
+            font-size: 13px;
+        }
+
+        .admin-badge {
+            background: #e9f8ef;
+            color: #078b43;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 12px;
             font-weight: 800;
-        }
-
-        .brand strong span {
-            color: #ed1761;
-        }
-
-        .brand small {
-            color: #94a3b8;
-            font-size: 9px;
-        }
-
-        .admin-user {
-            display: flex;
-            align-items: center;
-            gap: 12px;
         }
 
         .admin-email {
-            color: #64748b;
+            display: block;
+            margin-top: 4px;
+            color: #69736d;
             font-size: 11px;
+            font-weight: 500;
         }
 
-        .logout-button {
-            padding: 9px 14px;
-            border: 1px solid #e1e6eb;
-            border-radius: 8px;
-            background: #fff;
-            color: #475569;
-            cursor: pointer;
-            font-size: 11px;
-            font-weight: 700;
-        }
-
-        .logout-button:hover {
-            border-color: #ed1761;
-            color: #ed1761;
-        }
-
-        .admin-main {
-            width: min(1200px, 94%);
-            margin: auto;
-            padding: 38px 0 70px;
-        }
-
-        .page-heading {
-            margin-bottom: 28px;
-        }
-
-        .back {
-            display: inline-block;
-            margin-bottom: 15px;
-            color: #ed1761;
-            font-size: 11px;
-            font-weight: 800;
-        }
-
-        .page-heading span {
-            color: #ed1761;
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-        }
-
-        .page-heading h1 {
-            margin: 7px 0;
-            font-size: 29px;
-        }
-
-        .page-heading p {
-            color: #64748b;
-            font-size: 12px;
-        }
-
-        .stats-grid {
+        .stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-bottom: 25px;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
-        .stat-card {
-            padding: 20px;
+        .stat {
             background: #fff;
-            border: 1px solid #e7ebef;
-            border-radius: 15px;
+            border: 1px solid #e5ebe7;
+            border-radius: 14px;
+            padding: 20px;
         }
 
         .stat-title {
-            color: #64748b;
-            font-size: 10px;
-            font-weight: 700;
+            color: #69736d;
+            font-size: 12px;
+            margin-bottom: 8px;
         }
 
-        .stat-value {
-            margin-top: 10px;
-            font-size: 23px;
+        .stat-number {
+            font-size: 25px;
             font-weight: 800;
         }
 
-        .section-card {
-            background: #fff;
-            border: 1px solid #e7ebef;
-            border-radius: 15px;
-            overflow: hidden;
+        .pending {
+            color: #b56a00;
         }
 
-        .section-header {
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #edf0f3;
+        .approved {
+            color: #078b43;
         }
 
-        .section-header h2 {
-            font-size: 16px;
-        }
-
-        .section-header p {
-            margin-top: 4px;
-            color: #94a3b8;
-            font-size: 10px;
-        }
-
-        .refresh-button {
-            padding: 9px 13px;
-            border: none;
-            border-radius: 8px;
-            background: #ed1761;
-            color: #fff;
-            font-size: 10px;
-            font-weight: 800;
-            cursor: pointer;
-        }
-
-        .refresh-button:hover {
-            background: #d90d53;
-        }
-
-        .deposit-list {
-            padding: 5px 20px 20px;
+        .amount {
+            color: #17201b;
         }
 
         .deposit-card {
-            margin: 15px 0;
-            padding: 20px;
-            border: 1px solid #edf0f3;
-            border-radius: 12px;
             background: #fff;
+            border: 1px solid #e5ebe7;
+            border-radius: 16px;
+            overflow: hidden;
         }
 
-        .deposit-top {
+        .card-header {
+            padding: 20px;
+            border-bottom: 1px solid #e5ebe7;
+
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: space-between;
             gap: 15px;
         }
 
-        .customer-label {
-            color: #94a3b8;
-            font-size: 9px;
-            text-transform: uppercase;
+        .card-header h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .refresh-btn {
+            border: 1px solid #078b43;
+            background: #fff;
+            color: #078b43;
+            border-radius: 7px;
+            padding: 9px 14px;
             font-weight: 800;
-            letter-spacing: .7px;
+            cursor: pointer;
+        }
+
+        .refresh-btn:hover {
+            background: #078b43;
+            color: #fff;
+        }
+
+        .deposit-list {
+            padding: 20px;
+        }
+
+        .deposit-item {
+            border: 1px solid #e5ebe7;
+            border-radius: 13px;
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+
+        .deposit-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 18px;
         }
 
         .customer-email {
-            margin-top: 4px;
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 800;
+            word-break: break-word;
+        }
+
+        .customer-uid {
+            color: #78827c;
+            font-size: 10px;
+            margin-top: 5px;
+            word-break: break-all;
         }
 
         .status {
-            display: inline-block;
-            padding: 5px 9px;
+            padding: 6px 10px;
             border-radius: 20px;
-            font-size: 8px;
+            font-size: 10px;
             font-weight: 800;
-            text-transform: uppercase;
         }
 
-        .status.pending {
-            background: #fff7df;
-            color: #9a6b00;
+        .status-pending {
+            background: #fff6df;
+            color: #ad6900;
+            border: 1px solid #ffe0a3;
         }
 
-        .status.approved {
-            background: #eaf8ef;
-            color: #16803d;
+        .status-approved {
+            background: #e9f8ef;
+            color: #078b43;
+            border: 1px solid #bce8cc;
         }
 
-        .status.rejected {
-            background: #fff0f1;
-            color: #c52d3c;
+        .status-rejected {
+            background: #fff0f0;
+            color: #d93025;
+            border: 1px solid #f0cccc;
         }
 
         .details {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-            padding-top: 18px;
-            border-top: 1px solid #f0f2f5;
+            gap: 10px;
+            margin-bottom: 18px;
         }
 
-        .detail-label {
+        .detail {
+            background: #f7faf8;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .detail small {
             display: block;
-            color: #94a3b8;
-            font-size: 9px;
-            font-weight: 700;
+            color: #758079;
+            font-size: 10px;
             margin-bottom: 4px;
         }
 
-        .detail-value {
-            font-size: 11px;
-            font-weight: 700;
+        .detail strong {
+            font-size: 13px;
             word-break: break-word;
-        }
-
-        .amount {
-            font-size: 15px;
-            color: #172033;
         }
 
         .actions {
             display: flex;
             gap: 10px;
-            margin-top: 20px;
-            padding-top: 17px;
-            border-top: 1px solid #f0f2f5;
         }
 
-        .approve-button,
-        .reject-button {
-            padding: 10px 16px;
+        .approve,
+        .reject {
             border: none;
-            border-radius: 8px;
-            color: #fff;
-            cursor: pointer;
-            font-size: 10px;
+            border-radius: 7px;
+            padding: 11px 16px;
+            font-family: inherit;
             font-weight: 800;
+            cursor: pointer;
         }
 
-        .approve-button {
-            background: #16803d;
+        .approve {
+            background: #078b43;
+            color: #fff;
         }
 
-        .approve-button:hover {
-            background: #116b32;
+        .approve:hover {
+            background: #056b34;
         }
 
-        .reject-button {
-            background: #c52d3c;
+        .reject {
+            background: #fff0f0;
+            color: #d93025;
+            border: 1px solid #f0cccc;
         }
 
-        .reject-button:hover {
-            background: #a92331;
-        }
-
-        button:disabled {
-            opacity: .55;
-            cursor: not-allowed;
+        .reject:hover {
+            background: #d93025;
+            color: #fff;
         }
 
         .loading,
-        .empty-state {
-            padding: 45px 15px;
+        .empty,
+        .error {
             text-align: center;
-            color: #94a3b8;
-            font-size: 11px;
+            padding: 40px 20px;
+            color: #69736d;
+            font-size: 13px;
         }
 
-        .error-box {
-            display: none;
-            margin-bottom: 20px;
-            padding: 13px 15px;
-            border-radius: 9px;
-            background: #fff1f2;
-            color: #be123c;
-            font-size: 11px;
+        .error {
+            color: #d93025;
         }
 
-        .success-box {
-            display: none;
-            margin-bottom: 20px;
-            padding: 13px 15px;
-            border-radius: 9px;
-            background: #eaf8ef;
-            color: #16803d;
+        .footer {
+            text-align: center;
+            color: #78827c;
             font-size: 11px;
+            margin-top: 25px;
         }
 
         @media (max-width: 700px) {
 
-            .admin-email {
-                display: none;
+            .admin-page {
+                width: 94%;
+                padding-top: 20px;
             }
 
-            .stats-grid {
+            .admin-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .stats {
                 grid-template-columns: 1fr;
             }
 
@@ -392,124 +316,50 @@
                 flex-direction: column;
             }
 
-            .approve-button,
-            .reject-button {
+            .approve,
+            .reject {
                 width: 100%;
             }
-
-            .admin-main {
-                padding-top: 28px;
-            }
-
-            .page-heading h1 {
-                font-size: 25px;
-            }
-
         }
-
     </style>
-
 </head>
 
 <body>
 
-<header class="admin-header">
+<main class="admin-page">
 
-    <div class="header-inner">
+    <section class="admin-header">
 
-        <a href="dashboard.html" class="brand">
+        <div>
+            <h1>Deposit Management</h1>
 
-            <div class="brand-icon">
-                🛍️
-            </div>
+            <p>
+                Review Fame Store customer deposit requests.
+            </p>
 
-            <div>
-
-                <strong>
-                    Fame <span>Store</span>
-                </strong>
-
-                <small>
-                    ADMINISTRATION
-                </small>
-
-            </div>
-
-        </a>
-
-        <div class="admin-user">
-
-            <span
-                id="adminEmail"
-                class="admin-email"
-            >
-                Loading...
+            <span class="admin-email">
+                Logged in as: famesupport365@gmail.com
             </span>
-
-            <button
-                type="button"
-                id="logoutButton"
-                class="logout-button"
-            >
-                Logout
-            </button>
-
         </div>
 
-    </div>
+        <div class="admin-badge">
+            🛡️ ADMIN
+        </div>
 
-</header>
-
-
-<main class="admin-main">
-
-    <div class="page-heading">
-
-        <a
-            href="dashboard.html"
-            class="back"
-        >
-            ← Back to Dashboard
-        </a>
-
-        <span>
-            ADMIN PANEL
-        </span>
-
-        <h1>
-            Deposit Management
-        </h1>
-
-        <p>
-            Review customer deposit payment requests.
-        </p>
-
-    </div>
+    </section>
 
 
-    <div
-        id="errorBox"
-        class="error-box"
-    ></div>
+    <section class="stats">
 
-
-    <div
-        id="successBox"
-        class="success-box"
-    ></div>
-
-
-    <section class="stats-grid">
-
-        <div class="stat-card">
+        <div class="stat">
 
             <div class="stat-title">
-                PENDING DEPOSITS
+                Pending Deposits
             </div>
 
             <div
+                class="stat-number pending"
                 id="pendingCount"
-                class="stat-value"
             >
                 0
             </div>
@@ -517,15 +367,15 @@
         </div>
 
 
-        <div class="stat-card">
+        <div class="stat">
 
             <div class="stat-title">
-                APPROVED DEPOSITS
+                Approved Deposits
             </div>
 
             <div
+                class="stat-number approved"
                 id="approvedCount"
-                class="stat-value"
             >
                 0
             </div>
@@ -533,15 +383,15 @@
         </div>
 
 
-        <div class="stat-card">
+        <div class="stat">
 
             <div class="stat-title">
-                PENDING AMOUNT
+                Pending Amount
             </div>
 
             <div
+                class="stat-number amount"
                 id="pendingAmount"
-                class="stat-value"
             >
                 ₦0.00
             </div>
@@ -551,36 +401,27 @@
     </section>
 
 
-    <section class="section-card">
+    <section class="deposit-card">
 
-        <div class="section-header">
+        <div class="card-header">
 
-            <div>
-
-                <h2>
-                    Customer Deposit Requests
-                </h2>
-
-                <p>
-                    Review and process customer payments
-                </p>
-
-            </div>
+            <h2>
+                Customer Deposit Requests
+            </h2>
 
             <button
-                type="button"
-                id="refreshButton"
-                class="refresh-button"
+                class="refresh-btn"
+                id="refreshBtn"
             >
-                Refresh
+                ↻ Refresh
             </button>
 
         </div>
 
 
         <div
-            id="depositList"
             class="deposit-list"
+            id="depositList"
         >
 
             <div class="loading">
@@ -591,973 +432,1050 @@
 
     </section>
 
+
+    <div class="footer">
+        © 2026 Fame Store Admin Panel
+    </div>
+
 </main>
 
 
 <script type="module">
 
-    import {
-        initializeApp
-    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+import {
+    getFirestore,
+    collection,
+    getDocs,
+    doc,
+    runTransaction,
+    updateDoc,
+    serverTimestamp,
+    query,
+    orderBy
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
 
-    import {
-        getAuth,
-        onAuthStateChanged,
-        signOut
-    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+/* =====================================================
+   FIREBASE
+===================================================== */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyCnANua92lDErdMwoKQG3xN4NtILIcyrsk",
+
+    authDomain:
+        "famestore-aaa70.firebaseapp.com",
+
+    projectId:
+        "famestore-aaa70",
+
+    storageBucket:
+        "famestore-aaa70.firebasestorage.app",
+
+    messagingSenderId:
+        "906739139078",
+
+    appId:
+        "1:906739139078:web:435561274e65d47eb33987",
+
+    measurementId:
+        "G-H2429058CT"
+
+};
 
 
-    import {
-        getFirestore,
-        collection,
-        getDocs,
-        doc,
-        getDoc,
-        updateDoc,
-        runTransaction,
-        increment
-    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+const app =
+    initializeApp(firebaseConfig);
+
+const auth =
+    getAuth(app);
+
+const db =
+    getFirestore(app);
 
 
-    const firebaseConfig = {
+/* =====================================================
+   ADMIN EMAIL
+===================================================== */
 
-        apiKey:
-            "AIzaSyCnANua92lDErdMwoKQG3xN4NtILIcyrsk",
-
-        authDomain:
-            "famestore-aaa70.firebaseapp.com",
-
-        projectId:
-            "famestore-aaa70",
-
-        storageBucket:
-            "famestore-aaa70.firebasestorage.app",
-
-        messagingSenderId:
-            "906739139078",
-
-        appId:
-            "1:906739139078:web:435561274e65d47eb33987",
-
-        measurementId:
-            "G-H2429058CT"
-
-    };
+const ADMIN_EMAIL =
+    "famesupport365@gmail.com";
 
 
-    const app =
-        initializeApp(firebaseConfig);
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const depositList =
+    document.getElementById("depositList");
+
+const pendingCount =
+    document.getElementById("pendingCount");
+
+const approvedCount =
+    document.getElementById("approvedCount");
+
+const pendingAmount =
+    document.getElementById("pendingAmount");
 
 
-    const auth =
-        getAuth(app);
+/* =====================================================
+   FORMAT NAIRA
+===================================================== */
 
+function formatNaira(amount) {
 
-    const db =
-        getFirestore(app);
-
-
-    const adminEmail =
-        document.getElementById("adminEmail");
-
-
-    const depositList =
-        document.getElementById("depositList");
-
-
-    const errorBox =
-        document.getElementById("errorBox");
-
-
-    const successBox =
-        document.getElementById("successBox");
-
-
-    function showError(message) {
-
-        errorBox.textContent = message;
-        errorBox.style.display = "block";
-
-        successBox.style.display = "none";
-
-    }
-
-
-    function showSuccess(message) {
-
-        successBox.textContent = message;
-        successBox.style.display = "block";
-
-        errorBox.style.display = "none";
-
-    }
-
-
-    function formatNaira(amount) {
-
-        return new Intl.NumberFormat(
+    return "₦" +
+        Number(amount || 0).toLocaleString(
             "en-NG",
             {
-                style: "currency",
-                currency: "NGN"
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
             }
-        ).format(
-            Number(amount) || 0
         );
 
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(value) {
+
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =====================================================
+   FORMAT DATE
+===================================================== */
+
+function formatDate(timestamp) {
+
+    if (!timestamp) {
+        return "Date unavailable";
     }
 
+    try {
 
-    function escapeHTML(value) {
+        if (
+            typeof timestamp.toDate ===
+            "function"
+        ) {
 
-        return String(value ?? "")
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
+            return timestamp
+                .toDate()
+                .toLocaleString(
+                    "en-NG",
+                    {
+                        dateStyle: "medium",
+                        timeStyle: "short"
+                    }
+                );
 
-    }
-
-
-    function formatDate(timestamp) {
-
-        if (!timestamp) {
-            return "Not available";
         }
 
-        try {
+        return "Date unavailable";
 
-            let date;
+    } catch {
 
-            if (
-                typeof timestamp.toDate ===
-                "function"
-            ) {
+        return "Date unavailable";
 
-                date =
-                    timestamp.toDate();
+    }
 
-            } else if (
-                timestamp.seconds
-            ) {
+}
 
-                date =
-                    new Date(
-                        timestamp.seconds * 1000
-                    );
 
-            } else {
+/* =====================================================
+   ADMIN AUTHENTICATION
+===================================================== */
 
-                date =
-                    new Date(timestamp);
+onAuthStateChanged(
+    auth,
+    async (user) => {
 
-            }
+        if (!user) {
 
-            return date.toLocaleString(
-                "en-NG",
-                {
-                    day: "2-digit",
-                    month: "short",
-                    year: "numeric",
-                    hour: "2-digit",
-                    minute: "2-digit"
-                }
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        console.log(
+            "Current user:",
+            user.email
+        );
+
+
+        if (
+            !user.email ||
+            user.email.toLowerCase() !==
+            ADMIN_EMAIL.toLowerCase()
+        ) {
+
+            alert(
+                "Access denied. Login with the Fame Store admin account."
             );
 
-        } catch (error) {
+            await signOut(auth);
 
-            return "Not available";
+            window.location.href =
+                "login.html";
+
+            return;
 
         }
+
+
+        await loadDeposits();
 
     }
+);
 
 
-    /*
-     * ==================================================
-     * AUTHENTICATION
-     * ==================================================
-     */
+/* =====================================================
+   LOAD DEPOSITS
+===================================================== */
 
-    onAuthStateChanged(
-        auth,
-        async (user) => {
+async function loadDeposits() {
 
-            if (!user) {
-
-                window.location.href =
-                    "index.html";
-
-                return;
-
-            }
-
-            adminEmail.textContent =
-                user.email || "Admin";
-
-            await loadDeposits();
-
-        }
-    );
+    depositList.innerHTML = `
+        <div class="loading">
+            Loading deposits...
+        </div>
+    `;
 
 
-    /*
-     * ==================================================
-     * LOAD DEPOSITS
-     * ==================================================
-     */
+    try {
 
-    async function loadDeposits() {
+        const depositsRef =
+            collection(
+                db,
+                "deposits"
+            );
 
-        depositList.innerHTML = `
-            <div class="loading">
-                Loading deposits...
-            </div>
-        `;
 
-        errorBox.style.display = "none";
-        successBox.style.display = "none";
+        let snapshot;
+
 
         try {
 
-            const snapshot =
-                await getDocs(
-                    collection(
-                        db,
-                        "deposits"
+            const depositsQuery =
+                query(
+                    depositsRef,
+                    orderBy(
+                        "createdAt",
+                        "desc"
                     )
                 );
 
 
-            const deposits = [];
-
-
-            snapshot.forEach(
-                (depositDoc) => {
-
-                    deposits.push({
-                        id: depositDoc.id,
-                        ...depositDoc.data()
-                    });
-
-                }
-            );
-
-
-            deposits.sort(
-                (a, b) => {
-
-                    const aTime =
-                        a.createdAt?.seconds || 0;
-
-                    const bTime =
-                        b.createdAt?.seconds || 0;
-
-                    return bTime - aTime;
-
-                }
-            );
-
-
-            let pending = 0;
-            let approved = 0;
-            let pendingTotal = 0;
-
-
-            deposits.forEach(
-                (deposit) => {
-
-                    if (
-                        deposit.status ===
-                        "pending"
-                    ) {
-
-                        pending++;
-
-                        pendingTotal +=
-                            Number(
-                                deposit.amount
-                            ) || 0;
-
-                    }
-
-                    if (
-                        deposit.status ===
-                        "approved"
-                    ) {
-
-                        approved++;
-
-                    }
-
-                }
-            );
-
-
-            document.getElementById(
-                "pendingCount"
-            ).textContent =
-                pending;
-
-
-            document.getElementById(
-                "approvedCount"
-            ).textContent =
-                approved;
-
-
-            document.getElementById(
-                "pendingAmount"
-            ).textContent =
-                formatNaira(
-                    pendingTotal
+            snapshot =
+                await getDocs(
+                    depositsQuery
                 );
-
-
-            renderDeposits(
-                deposits
-            );
 
         } catch (error) {
 
-            console.error(
-                "Load deposits error:",
+            console.warn(
+                "Ordered query failed:",
                 error
             );
 
-            showError(
-                "Unable to load deposits. Check your Firestore security rules."
-            );
 
-            depositList.innerHTML = `
-                <div class="empty-state">
-                    Unable to load deposits.
-                </div>
-            `;
+            snapshot =
+                await getDocs(
+                    depositsRef
+                );
 
         }
 
-    }
+
+        let pending = 0;
+        let approved = 0;
+        let amount = 0;
 
 
-    /*
-     * ==================================================
-     * RENDER DEPOSITS
-     * ==================================================
-     */
-
-    function renderDeposits(deposits) {
-
-        if (!deposits.length) {
+        if (snapshot.empty) {
 
             depositList.innerHTML = `
-                <div class="empty-state">
-                    No customer deposits found.
+                <div class="empty">
+                    No deposit requests found.
                 </div>
             `;
+
+            updateStats(
+                0,
+                0,
+                0
+            );
 
             return;
 
         }
 
 
-        depositList.innerHTML =
-            deposits.map(
-                (deposit) => {
-
-                    const status =
-                        deposit.status ||
-                        "pending";
+        depositList.innerHTML = "";
 
 
-                    const email =
-                        deposit.customerEmail ||
-                        "Customer";
+        snapshot.forEach(
+            (depositDoc) => {
+
+                const data =
+                    depositDoc.data();
 
 
-                    const sender =
-                        deposit.senderName ||
-                        "Unknown sender";
+                const depositId =
+                    depositDoc.id;
 
 
-                    const reference =
-                        deposit.transactionReference ||
-                        deposit.reference ||
-                        "Not provided";
+                const status =
+                    String(
+                        data.status ||
+                        "pending"
+                    ).toLowerCase();
 
 
-                    const uid =
-                        deposit.customerUID ||
-                        deposit.customerUid ||
-                        deposit.userId ||
-                        deposit.uid ||
-                        "Not provided";
+                const depositAmount =
+                    Number(
+                        data.amount || 0
+                    );
 
 
-                    const amount =
-                        formatNaira(
-                            deposit.amount
-                        );
+                if (
+                    status ===
+                    "pending"
+                ) {
+
+                    pending++;
+
+                    amount +=
+                        depositAmount;
+
+                }
 
 
-                    const createdAt =
-                        formatDate(
-                            deposit.createdAt
-                        );
+                if (
+                    status ===
+                    "approved"
+                ) {
+
+                    approved++;
+
+                }
 
 
-                    const buttons =
-                        status === "pending"
-                            ? `
-                                <div class="actions">
-
-                                    <button
-                                        type="button"
-                                        class="approve-button"
-                                        data-action="approve"
-                                        data-id="${escapeHTML(deposit.id)}"
-                                    >
-                                        ✓ Approve
-                                    </button>
-
-                                    <button
-                                        type="button"
-                                        class="reject-button"
-                                        data-action="reject"
-                                        data-id="${escapeHTML(deposit.id)}"
-                                    >
-                                        ✕ Reject
-                                    </button>
-
-                                </div>
-                            `
-                            : "";
+                const email =
+                    data.customerEmail ||
+                    "No email";
 
 
-                    return `
-
-                        <div class="deposit-card">
-
-                            <div class="deposit-top">
-
-                                <div>
-
-                                    <div class="customer-label">
-                                        Customer
-                                    </div>
-
-                                    <div class="customer-email">
-                                        ${escapeHTML(email)}
-                                    </div>
-
-                                </div>
-
-                                <span
-                                    class="status ${escapeHTML(status)}"
-                                >
-                                    ${escapeHTML(status)}
-                                </span>
-
-                            </div>
+                const sender =
+                    data.senderName ||
+                    "Not provided";
 
 
-                            <div class="details">
-
-                                <div>
-
-                                    <span class="detail-label">
-                                        Deposit Amount
-                                    </span>
-
-                                    <span class="detail-value amount">
-                                        ${amount}
-                                    </span>
-
-                                </div>
+                const reference =
+                    data.transactionReference ||
+                    "Not provided";
 
 
-                                <div>
-
-                                    <span class="detail-label">
-                                        Sender Name
-                                    </span>
-
-                                    <span class="detail-value">
-                                        ${escapeHTML(sender)}
-                                    </span>
-
-                                </div>
+                const uid =
+                    data.userId ||
+                    "Missing UID";
 
 
-                                <div>
-
-                                    <span class="detail-label">
-                                        Transaction Reference
-                                    </span>
-
-                                    <span class="detail-value">
-                                        ${escapeHTML(reference)}
-                                    </span>
-
-                                </div>
+                const bankName =
+                    data.bankName ||
+                    "Not provided";
 
 
-                                <div>
-
-                                    <span class="detail-label">
-                                        Submitted
-                                    </span>
-
-                                    <span class="detail-value">
-                                        ${createdAt}
-                                    </span>
-
-                                </div>
+                const accountNumber =
+                    data.accountNumber ||
+                    "Not provided";
 
 
-                                <div>
+                let statusClass =
+                    "status-pending";
 
-                                    <span class="detail-label">
-                                        Customer UID
-                                    </span>
 
-                                    <span class="detail-value">
-                                        ${escapeHTML(uid)}
-                                    </span>
+                if (
+                    status ===
+                    "approved"
+                ) {
 
-                                </div>
+                    statusClass =
+                        "status-approved";
+
+                }
+
+
+                if (
+                    status ===
+                    "rejected"
+                ) {
+
+                    statusClass =
+                        "status-rejected";
+
+                }
+
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                item.className =
+                    "deposit-item";
+
+
+                item.innerHTML = `
+
+                    <div class="deposit-top">
+
+                        <div>
+
+                            <div class="customer-email">
+
+                                ${escapeHtml(email)}
 
                             </div>
 
-                            ${buttons}
+                            <div class="customer-uid">
+
+                                Customer UID:
+                                ${escapeHtml(uid)}
+
+                            </div>
 
                         </div>
 
-                    `;
 
-                }
-            ).join("");
+                        <span
+                            class="status ${statusClass}"
+                        >
 
+                            ${escapeHtml(
+                                status.toUpperCase()
+                            )}
 
-        document
-            .querySelectorAll(
-                "[data-action]"
-            )
-            .forEach(
-                (button) => {
+                        </span>
 
-                    button.addEventListener(
-                        "click",
-                        async () => {
-
-                            const action =
-                                button.dataset.action;
-
-                            const id =
-                                button.dataset.id;
-
-                            if (
-                                action ===
-                                "approve"
-                            ) {
-
-                                await approveDeposit(
-                                    id,
-                                    button
-                                );
-
-                            }
+                    </div>
 
 
-                            if (
-                                action ===
-                                "reject"
-                            ) {
+                    <div class="details">
 
-                                await rejectDeposit(
-                                    id,
-                                    button
-                                );
+                        <div class="detail">
 
-                            }
+                            <small>
+                                Deposit Amount
+                            </small>
 
-                        }
-                    );
+                            <strong>
+                                ${formatNaira(
+                                    depositAmount
+                                )}
+                            </strong>
 
-                }
-            );
+                        </div>
+
+
+                        <div class="detail">
+
+                            <small>
+                                Sender Name
+                            </small>
+
+                            <strong>
+                                ${escapeHtml(
+                                    sender
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <small>
+                                Transaction Reference
+                            </small>
+
+                            <strong>
+                                ${escapeHtml(
+                                    reference
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <small>
+                                Bank
+                            </small>
+
+                            <strong>
+                                ${escapeHtml(
+                                    bankName
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <small>
+                                Account Number
+                            </small>
+
+                            <strong>
+                                ${escapeHtml(
+                                    accountNumber
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <small>
+                                Submitted
+                            </small>
+
+                            <strong>
+                                ${formatDate(
+                                    data.createdAt
+                                )}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    ${
+                        status === "pending"
+                        ?
+                        `
+
+                        <div class="actions">
+
+                            <button
+                                class="approve"
+                                data-id="${escapeHtml(
+                                    depositId
+                                )}"
+                            >
+                                ✓ Approve Payment
+                            </button>
+
+
+                            <button
+                                class="reject"
+                                data-id="${escapeHtml(
+                                    depositId
+                                )}"
+                            >
+                                ✕ Reject
+                            </button>
+
+                        </div>
+
+                        `
+                        :
+                        ""
+                    }
+
+                `;
+
+
+                depositList.appendChild(
+                    item
+                );
+
+            }
+        );
+
+
+        updateStats(
+            pending,
+            approved,
+            amount
+        );
+
+
+        attachButtons();
+
+
+    } catch (error) {
+
+        console.error(
+            "LOAD DEPOSITS ERROR:",
+            error
+        );
+
+
+        depositList.innerHTML = `
+
+            <div class="error">
+
+                Unable to load deposits.
+
+                <br><br>
+
+                ${escapeHtml(
+                    error.message
+                )}
+
+            </div>
+
+        `;
 
     }
 
+}
 
-    /*
-     * ==================================================
-     * APPROVE DEPOSIT
-     * ==================================================
-     */
 
-    async function approveDeposit(
-        depositId,
-        button
-    ) {
+/* =====================================================
+   STATS
+===================================================== */
 
-        const confirmed =
-            confirm(
-                "Approve this deposit? The customer's balance will be increased by the deposit amount."
+function updateStats(
+    pending,
+    approved,
+    amount
+) {
+
+    pendingCount.textContent =
+        pending;
+
+    approvedCount.textContent =
+        approved;
+
+    pendingAmount.textContent =
+        formatNaira(amount);
+
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+function attachButtons() {
+
+    document
+        .querySelectorAll(
+            ".approve"
+        )
+        .forEach(
+            (button) => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        approveDeposit(
+                            button.dataset.id
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+    document
+        .querySelectorAll(
+            ".reject"
+        )
+        .forEach(
+            (button) => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        rejectDeposit(
+                            button.dataset.id
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   APPROVE DEPOSIT
+===================================================== */
+
+async function approveDeposit(
+    depositId
+) {
+
+    const confirmed =
+        confirm(
+            "Approve this deposit and credit the customer's wallet?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    try {
+
+        const depositRef =
+            doc(
+                db,
+                "deposits",
+                depositId
             );
 
 
-        if (!confirmed) {
-            return;
-        }
+        await runTransaction(
+            db,
+            async (transaction) => {
+
+                /* GET DEPOSIT */
+
+                const depositSnapshot =
+                    await transaction.get(
+                        depositRef
+                    );
 
 
-        button.disabled = true;
-        button.textContent =
-            "Approving...";
+                if (
+                    !depositSnapshot.exists()
+                ) {
+
+                    throw new Error(
+                        "Deposit does not exist."
+                    );
+
+                }
 
 
-        try {
-
-            const depositRef =
-                doc(
-                    db,
-                    "deposits",
-                    depositId
-                );
+                const depositData =
+                    depositSnapshot.data();
 
 
-            await runTransaction(
-                db,
-                async (transaction) => {
+                /* PREVENT DOUBLE CREDIT */
 
-                    const depositSnap =
-                        await transaction.get(
-                            depositRef
-                        );
-
-
-                    if (
-                        !depositSnap.exists()
-                    ) {
-
-                        throw new Error(
-                            "Deposit no longer exists."
-                        );
-
-                    }
-
-
-                    const deposit =
-                        depositSnap.data();
-
-
-                    if (
-                        deposit.status !==
+                const currentStatus =
+                    String(
+                        depositData.status ||
                         "pending"
-                    ) {
-
-                        throw new Error(
-                            "This deposit has already been processed."
-                        );
-
-                    }
+                    ).toLowerCase();
 
 
-                    const amount =
+                if (
+                    currentStatus ===
+                    "approved"
+                ) {
+
+                    throw new Error(
+                        "This deposit is already approved."
+                    );
+
+                }
+
+
+                if (
+                    currentStatus ===
+                    "rejected"
+                ) {
+
+                    throw new Error(
+                        "This deposit has already been rejected."
+                    );
+
+                }
+
+
+                /* USER UID */
+
+                const userId =
+                    depositData.userId;
+
+
+                if (!userId) {
+
+                    throw new Error(
+                        "Customer UID is missing."
+                    );
+
+                }
+
+
+                /* AMOUNT */
+
+                const depositAmount =
+                    Number(
+                        depositData.amount || 0
+                    );
+
+
+                if (
+                    !Number.isFinite(
+                        depositAmount
+                    ) ||
+                    depositAmount <= 0
+                ) {
+
+                    throw new Error(
+                        "Invalid deposit amount."
+                    );
+
+                }
+
+
+                /* CUSTOMER DOCUMENT */
+
+                const userRef =
+                    doc(
+                        db,
+                        "users",
+                        userId
+                    );
+
+
+                const userSnapshot =
+                    await transaction.get(
+                        userRef
+                    );
+
+
+                if (
+                    userSnapshot.exists()
+                ) {
+
+                    const userData =
+                        userSnapshot.data();
+
+
+                    const currentBalance =
                         Number(
-                            deposit.amount
-                        ) || 0;
-
-
-                    if (
-                        amount <= 0
-                    ) {
-
-                        throw new Error(
-                            "Invalid deposit amount."
-                        );
-
-                    }
-
-
-                    const customerUID =
-                        deposit.customerUID ||
-                        deposit.customerUid ||
-                        deposit.userId ||
-                        deposit.uid;
-
-
-                    if (
-                        !customerUID
-                    ) {
-
-                        throw new Error(
-                            "Customer UID is missing from this deposit."
-                        );
-
-                    }
-
-
-                    /*
-                     * Your customer balance document
-                     * is expected to be:
-                     *
-                     * users/{customerUID}
-                     *
-                     * with a numeric "balance" field.
-                     */
-
-                    const userRef =
-                        doc(
-                            db,
-                            "users",
-                            customerUID
+                            userData.walletBalance ||
+                            0
                         );
 
 
-                    const userSnap =
-                        await transaction.get(
-                            userRef
-                        );
-
-
-                    if (
-                        !userSnap.exists()
-                    ) {
-
-                        throw new Error(
-                            "Customer account was not found."
-                        );
-
-                    }
+                    const newBalance =
+                        currentBalance +
+                        depositAmount;
 
 
                     transaction.update(
                         userRef,
                         {
-                            balance:
-                                increment(
-                                    amount
-                                )
+
+                            walletBalance:
+                                newBalance
+
                         }
                     );
 
+                } else {
 
-                    transaction.update(
-                        depositRef,
+                    transaction.set(
+                        userRef,
                         {
-                            status:
-                                "approved",
 
-                            approvedAt:
-                                new Date(),
+                            uid:
+                                userId,
 
-                            approvedBy:
-                                auth.currentUser?.uid ||
-                                null
+                            email:
+                                depositData.customerEmail ||
+                                "",
+
+                            walletBalance:
+                                depositAmount,
+
+                            createdAt:
+                                serverTimestamp()
+
                         }
                     );
 
                 }
-            );
 
 
-            showSuccess(
-                "Deposit approved successfully."
-            );
+                /* MARK APPROVED */
 
+                transaction.update(
+                    depositRef,
+                    {
 
-            await loadDeposits();
+                        status:
+                            "approved",
 
-        } catch (error) {
+                        approvedBy:
+                            ADMIN_EMAIL,
 
-            console.error(
-                "Approve deposit error:",
-                error
-            );
+                        approvedAt:
+                            serverTimestamp(),
 
-            showError(
-                error.message ||
-                "Unable to approve deposit."
-            );
+                        creditedAmount:
+                            depositAmount,
 
-            button.disabled = false;
-            button.textContent =
-                "✓ Approve";
+                        walletCredited:
+                            true
 
-        }
-
-    }
-
-
-    /*
-     * ==================================================
-     * REJECT DEPOSIT
-     * ==================================================
-     */
-
-    async function rejectDeposit(
-        depositId,
-        button
-    ) {
-
-        const confirmed =
-            confirm(
-                "Reject this deposit?"
-            );
-
-
-        if (!confirmed) {
-            return;
-        }
-
-
-        button.disabled = true;
-        button.textContent =
-            "Rejecting...";
-
-
-        try {
-
-            const depositRef =
-                doc(
-                    db,
-                    "deposits",
-                    depositId
-                );
-
-
-            const depositSnap =
-                await getDoc(
-                    depositRef
-                );
-
-
-            if (
-                !depositSnap.exists()
-            ) {
-
-                throw new Error(
-                    "Deposit no longer exists."
+                    }
                 );
 
             }
-
-
-            const deposit =
-                depositSnap.data();
-
-
-            if (
-                deposit.status !==
-                "pending"
-            ) {
-
-                throw new Error(
-                    "This deposit has already been processed."
-                );
-
-            }
-
-
-            await updateDoc(
-                depositRef,
-                {
-                    status:
-                        "rejected",
-
-                    rejectedAt:
-                        new Date(),
-
-                    rejectedBy:
-                        auth.currentUser?.uid ||
-                        null
-                }
-            );
-
-
-            showSuccess(
-                "Deposit rejected successfully."
-            );
-
-
-            await loadDeposits();
-
-        } catch (error) {
-
-            console.error(
-                "Reject deposit error:",
-                error
-            );
-
-            showError(
-                error.message ||
-                "Unable to reject deposit."
-            );
-
-            button.disabled = false;
-            button.textContent =
-                "✕ Reject";
-
-        }
-
-    }
-
-
-    /*
-     * ==================================================
-     * REFRESH
-     * ==================================================
-     */
-
-    document
-        .getElementById(
-            "refreshButton"
-        )
-        .addEventListener(
-            "click",
-            loadDeposits
         );
 
 
-    /*
-     * ==================================================
-     * LOGOUT
-     * ==================================================
-     */
+        alert(
+            "Payment approved successfully.\n\n" +
+            "Customer wallet has been credited."
+        );
 
-    document
-        .getElementById(
-            "logoutButton"
-        )
-        .addEventListener(
-            "click",
-            async () => {
 
-                try {
+        await loadDeposits();
 
-                    await signOut(auth);
 
-                    window.location.href =
-                        "index.html";
+    } catch (error) {
 
-                } catch (error) {
+        console.error(
+            "APPROVE ERROR:",
+            error
+        );
 
-                    console.error(
-                        "Logout error:",
-                        error
-                    );
 
-                }
+        alert(
+            "Unable to approve payment.\n\n" +
+            error.message
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   REJECT DEPOSIT
+===================================================== */
+
+async function rejectDeposit(
+    depositId
+) {
+
+    const confirmed =
+        confirm(
+            "Reject this deposit?"
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    try {
+
+        const depositRef =
+            doc(
+                db,
+                "deposits",
+                depositId
+            );
+
+
+        await updateDoc(
+            depositRef,
+            {
+
+                status:
+                    "rejected",
+
+                rejectedBy:
+                    ADMIN_EMAIL,
+
+                rejectedAt:
+                    serverTimestamp()
 
             }
         );
+
+
+        alert(
+            "Deposit rejected."
+        );
+
+
+        await loadDeposits();
+
+
+    } catch (error) {
+
+        console.error(
+            "REJECT ERROR:",
+            error
+        );
+
+
+        alert(
+            "Unable to reject deposit.\n\n" +
+            error.message
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   REFRESH
+===================================================== */
+
+document
+    .getElementById(
+        "refreshBtn"
+    )
+    .addEventListener(
+        "click",
+        loadDeposits
+    );
 
 </script>
 
 </body>
-
 </html>
