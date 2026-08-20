@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Dashboard | Fame Store</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #f7f8fb;
+            color: #172033;
+            font-family: "DM Sans", sans-serif;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* ================= HEADER ================= */
+
+        .admin-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #ffffff;
+            border-bottom: 1px solid #e8ebef;
+        }
+
+        .header-inner {
+            width: min(1200px, 94%);
+            min-height: 72px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 11px;
+            background: #fff0f5;
+            font-size: 21px;
+        }
+
+        .brand strong {
+            display: block;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .brand strong span {
+            color: #ed1761;
+        }
+
+        .brand small {
+            color: #94a3b8;
+            font-size: 9px;
+        }
+
+        .admin-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .admin-email {
+            color: #64748b;
+            font-size: 11px;
+        }
+
+        .logout-button {
+            padding: 9px 14px;
+            border: 1px solid #e1e6eb;
+            border-radius: 8px;
+            background: #ffffff;
+            color: #475569;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .logout-button:hover {
+            border-color: #ed1761;
+            color: #ed1761;
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .admin-main {
+            width: min(1200px, 94%);
+            margin: auto;
+            padding: 38px 0 70px;
+        }
+
+        .page-heading {
+            margin-bottom: 28px;
+        }
+
+        .page-heading span {
+            color: #ed1761;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .page-heading h1 {
+            margin: 7px 0;
+            font-size: 29px;
+        }
+
+        .page-heading p {
+            color: #64748b;
+            font-size: 12px;
+        }
+
+
+        /* ================= STAT CARDS ================= */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            padding: 20px;
+            background: #ffffff;
+            border: 1px solid #e7ebef;
+            border-radius: 15px;
+        }
+
+        .stat-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .stat-title {
+            color: #64748b;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .stat-icon {
+            width: 35px;
+            height: 35px;
+            display: grid;
+            place-items: center;
+            border-radius: 9px;
+            background: #f8f1f4;
+            font-size: 17px;
+        }
+
+        .stat-value {
+            margin-top: 13px;
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+
+        /* ================= QUICK ACTIONS ================= */
+
+        .section-card {
+            background: #ffffff;
+            border: 1px solid #e7ebef;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #edf0f3;
+        }
+
+        .section-header h2 {
+            font-size: 16px;
+        }
+
+        .section-header p {
+            margin-top: 4px;
+            color: #94a3b8;
+            font-size: 10px;
+        }
+
+        .view-button {
+            padding: 9px 13px;
+            border: none;
+            border-radius: 8px;
+            background: #ed1761;
+            color: #ffffff;
+            font-size: 10px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .view-button:hover {
+            background: #d90d53;
+        }
+
+        .actions {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .action {
+            padding: 17px;
+            border: 1px solid #edf0f3;
+            border-radius: 11px;
+            background: #ffffff;
+            transition: 0.2s;
+        }
+
+        .action:hover {
+            border-color: #ed1761;
+            transform: translateY(-2px);
+        }
+
+        .action-icon {
+            font-size: 21px;
+            margin-bottom: 9px;
+        }
+
+        .action h3 {
+            font-size: 12px;
+        }
+
+        .action p {
+            margin-top: 4px;
+            color: #94a3b8;
+            font-size: 10px;
+        }
+
+
+        /* ================= RECENT DEPOSITS ================= */
+
+        .recent-section {
+            margin-top: 25px;
+        }
+
+        .deposit-list {
+            padding: 5px 20px 15px;
+        }
+
+        .empty-state {
+            padding: 35px 15px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 11px;
+        }
+
+        .loading {
+            padding: 35px;
+            text-align: center;
+            color: #64748b;
+            font-size: 11px;
+        }
+
+        .deposit-row {
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            border-bottom: 1px solid #f0f2f5;
+        }
+
+        .deposit-row:last-child {
+            border-bottom: none;
+        }
+
+        .deposit-customer strong {
+            display: block;
+            font-size: 11px;
+        }
+
+        .deposit-customer small {
+            color: #94a3b8;
+            font-size: 9px;
+        }
+
+        .deposit-right {
+            text-align: right;
+        }
+
+        .deposit-amount {
+            display: block;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 4px;
+            padding: 4px 7px;
+            border-radius: 20px;
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .status.pending {
+            background: #fff7df;
+            color: #9a6b00;
+        }
+
+        .status.approved {
+            background: #eaf8ef;
+            color: #16803d;
+        }
+
+        .status.rejected {
+            background: #fff0f1;
+            color: #c52d3c;
+        }
+
+
+        /* ================= ERROR ================= */
+
+        .error-box {
+            display: none;
+            margin-bottom: 20px;
+            padding: 13px 15px;
+            border-radius: 9px;
+            background: #fff1f2;
+            color: #be123c;
+            font-size: 11px;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 850px) {
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .admin-email {
+                display: none;
+            }
+
+            .admin-main {
+                padding-top: 28px;
+            }
+
+            .page-heading h1 {
+                font-size: 25px;
+            }
+
+            .stats-grid {
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 15px;
+            }
+
+            .stat-value {
+                font-size: 19px;
+            }
+
+            .actions {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="admin-header">
+
+        <div class="header-inner">
+
+            <a href="dashboard.html" class="brand">
+
+                <div class="brand-icon">
+                    🛍️
+                </div>
+
+                <div>
+
+                    <strong>
+                        Fame <span>Store</span>
+                    </strong>
+
+                    <small>
+                        ADMINISTRATION
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <div class="admin-user">
+
+                <span
+                    id="adminEmail"
+                    class="admin-email"
+                >
+                    Loading...
+                </span>
+
+                <button
+                    type="button"
+                    id="logoutButton"
+                    class="logout-button"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="admin-main">
+
+
+        <div class="page-heading">
+
+            <span>
+                ADMIN PANEL
+            </span>
+
+            <h1>
+                Dashboard
+            </h1>
+
+            <p>
+                Manage Fame Store customers, deposits and payments.
+            </p>
+
+        </div>
+
+
+
+        <!-- ================= ERROR ================= -->
+
+        <div
+            id="errorBox"
+            class="error-box"
+        ></div>
+
+
+
+        <!-- ================= STATISTICS ================= -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-title">
+                        CUSTOMERS
+                    </span>
+
+                    <div class="stat-icon">
+                        👥
+                    </div>
+
+                </div>
+
+                <div
+                    id="customerCount"
+                    class="stat-value"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-title">
+                        PENDING DEPOSITS
+                    </span>
+
+                    <div class="stat-icon">
+                        ⏳
+                    </div>
+
+                </div>
+
+                <div
+                    id="pendingCount"
+                    class="stat-value"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-title">
+                        APPROVED DEPOSITS
+                    </span>
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                </div>
+
+                <div
+                    id="approvedCount"
+                    class="stat-value"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-title">
+                        PENDING AMOUNT
+                    </span>
+
+                    <div class="stat-icon">
+                        ₦
+                    </div>
+
+                </div>
+
+                <div
+                    id="pendingAmount"
+                    class="stat-value"
+                >
+                    ₦0.00
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <section class="section-card">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        Quick Actions
+                    </h2>
+
+                    <p>
+                        Manage your store
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="actions">
+
+
+                <a
+                    href="admin-deposits.html"
+                    class="action"
+                >
+
+                    <div class="action-icon">
+                        💰
+                    </div>
+
+                    <h3>
+                        Deposit Management
+                    </h3>
+
+                    <p>
+                        Review customer deposits
+                    </p>
+
+                </a>
+
+
+                <div class="action">
+
+                    <div class="action-icon">
+                        👥
+                    </div>
+
+                    <h3>
+                        Customers
+                    </h3>
+
+                    <p>
+                        Coming next
+                    </p>
+
+                </div>
+
+
+                <div class="action">
+
+                    <div class="action-icon">
+                        🎁
+                    </div>
+
+                    <h3>
+                        Orders
+                    </h3>
+
+                    <p>
+                        Coming next
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= RECENT DEPOSITS ================= -->
+
+        <section class="section-card recent-section">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        Recent Deposits
+                    </h2>
+
+                    <p>
+                        Latest customer payment requests
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="admin-deposits.html"
+                    class="view-button"
+                >
+                    View All
+                </a>
+
+            </div>
+
+
+            <div
+                id="depositList"
+                class="deposit-list"
+            >
+
+                <div class="loading">
+                    Loading deposits...
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= FIREBASE ================= -->
+
+    <script type="module">
+
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+        import {
+            getAuth,
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+        import {
+            getFirestore,
+            collection,
+            getDocs,
+            query,
+            orderBy,
+            limit
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+
+
+        /* ================= FIREBASE CONFIG ================= */
+
+        const firebaseConfig = {
+
+            apiKey:
+                "AIzaSyCnANua92lDErdMwoKQG3xN4NtILIcyrsk",
+
+            authDomain:
+                "famestore-aaa70.firebaseapp.com",
+
+            projectId:
+                "famestore-aaa70",
+
+            storageBucket:
+                "famestore-aaa70.firebasestorage.app",
+
+            messagingSenderId:
+                "906739139078",
+
+            appId:
+                "1:906739139078:web:435561274e65d47eb33987",
+
+            measurementId:
+                "G-H2429058CT"
+
+        };
+
+
+        const app =
+            initializeApp(
+                firebaseConfig
+            );
+
+
+        const auth =
+            getAuth(app);
+
+
+        const db =
+            getFirestore(app);
+
+
+
+        /* ================= ELEMENTS ================= */
+
+        const adminEmail =
+            document.getElementById(
+                "adminEmail"
+            );
+
+        const errorBox =
+            document.getElementById(
+                "errorBox"
+            );
+
+        const depositList =
+            document.getElementById(
+                "depositList"
+            );
+
+
+
+        /* ================= ERROR ================= */
+
+        function showError(message) {
+
+            errorBox.textContent =
+                message;
+
+            errorBox.style.display =
+                "block";
+
+        }
+
+
+
+        /* ================= CURRENCY ================= */
+
+        function formatNaira(amount) {
+
+            return new Intl.NumberFormat(
+                "en-NG",
+                {
+                    style: "currency",
+                    currency: "NGN"
+                }
+            ).format(
+                Number(amount) || 0
+            );
+
+        }
+
+
+
+        /* ================= AUTH ================= */
+
+        onAuthStateChanged(
+            auth,
+            async (user) => {
+
+                if (!user) {
+
+                    window.location.href =
+                        "index.html";
+
+                    return;
+
+                }
+
+
+                adminEmail.textContent =
+                    user.email || "Admin";
+
+
+                await loadDashboard();
+
+            }
+        );
+
+
+
+        /* ================= LOAD DASHBOARD ================= */
+
+        async function loadDashboard() {
+
+            try {
+
+                const depositsSnapshot =
+                    await getDocs(
+                        collection(
+                            db,
+                            "deposits"
+                        )
+                    );
+
+
+                let pending =
+                    0;
+
+                let approved =
+                    0;
+
+                let pendingTotal =
+                    0;
+
+                const deposits = [];
+
+
+
+                depositsSnapshot.forEach(
+                    (doc) => {
+
+                        const data =
+                            doc.data();
+
+
+                        deposits.push({
+                            id: doc.id,
+                            ...data
+                        });
+
+
+                        if (
+                            data.status ===
+                            "pending"
+                        ) {
+
+                            pending++;
+
+                            pendingTotal +=
+                                Number(
+                                    data.amount
+                                ) || 0;
+
+                        }
+
+
+                        if (
+                            data.status ===
+                            "approved"
+                        ) {
+
+                            approved++;
+
+                        }
+
+                    }
+                );
+
+
+
+                document.getElementById(
+                    "pendingCount"
+                ).textContent =
+                    pending;
+
+
+                document.getElementById(
+                    "approvedCount"
+                ).textContent =
+                    approved;
+
+
+                document.getElementById(
+                    "pendingAmount"
+                ).textContent =
+                    formatNaira(
+                        pendingTotal
+                    );
+
+
+
+                /*
+                 * Customer count is loaded from
+                 * the customers collection if it
+                 * exists.
+                 */
+
+                try {
+
+                    const usersSnapshot =
+                        await getDocs(
+                            collection(
+                                db,
+                                "users"
+                            )
+                        );
+
+
+                    document.getElementById(
+                        "customerCount"
+                    ).textContent =
+                        usersSnapshot.size;
+
+                } catch (error) {
+
+                    document.getElementById(
+                        "customerCount"
+                    ).textContent =
+                        "—";
+
+                }
+
+
+
+                /* ============================
+                   SORT RECENT DEPOSITS
+                ============================ */
+
+                deposits.sort(
+                    (a, b) => {
+
+                        const aTime =
+                            a.createdAt?.seconds ||
+                            0;
+
+                        const bTime =
+                            b.createdAt?.seconds ||
+                            0;
+
+                        return bTime - aTime;
+
+                    }
+                );
+
+
+                renderRecentDeposits(
+                    deposits.slice(0, 5)
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Dashboard error:",
+                    error
+                );
+
+
+                showError(
+                    "Unable to load dashboard data. Check your Firestore security rules."
+                );
+
+
+                depositList.innerHTML = `
+                    <div class="empty-state">
+                        Unable to load deposits.
+                    </div>
+                `;
+
+            }
+
+        }
+
+
+
+        /* ================= RECENT DEPOSITS ================= */
+
+        function renderRecentDeposits(
+            deposits
+        ) {
+
+            if (!deposits.length) {
+
+                depositList.innerHTML = `
+                    <div class="empty-state">
+                        No deposits have been submitted yet.
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            depositList.innerHTML =
+                deposits
+                    .map(
+                        (deposit) => {
+
+                            const status =
+                                deposit.status ||
+                                "pending";
+
+
+                            const amount =
+                                formatNaira(
+                                    deposit.amount
+                                );
+
+
+                            const email =
+                                deposit.customerEmail ||
+                                "Customer";
+
+
+                            const sender =
+                                deposit.senderName ||
+                                "Unknown sender";
+
+
+                            return `
+
+                                <div class="deposit-row">
+
+                                    <div class="deposit-customer">
+
+                                        <strong>
+                                            ${escapeHTML(email)}
+                                        </strong>
+
+                                        <small>
+                                            ${escapeHTML(sender)}
+                                        </small>
+
+                                    </div>
+
+
+                                    <div class="deposit-right">
+
+                                        <span class="deposit-amount">
+                                            ${amount}
+                                        </span>
+
+                                        <span class="status ${status}">
+                                            ${status}
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            `;
+
+                        }
+                    )
+                    .join("");
+
+        }
+
+
+
+        /* ================= SAFE HTML ================= */
+
+        function escapeHTML(value) {
+
+            return String(value || "")
+                .replace(
+                    /&/g,
+                    "&amp;"
+                )
+                .replace(
+                    /</g,
+                    "&lt;"
+                )
+                .replace(
+                    />/g,
+                    "&gt;"
+                )
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+                .replace(
+                    /'/g,
+                    "&#039;"
+                );
+
+        }
+
+
+
+        /* ================= LOGOUT ================= */
+
+        document
+            .getElementById(
+                "logoutButton"
+            )
+            .addEventListener(
+                "click",
+                async () => {
+
+                    try {
+
+                        await signOut(
+                            auth
+                        );
+
+                        window.location.href =
+                            "index.html";
+
+                    } catch (error) {
+
+                        console.error(
+                            "Logout error:",
+                            error
+                        );
+
+                    }
+
+                }
+            );
+
+    </script>
+
+
+</body>
+
+</html>
